@@ -12,7 +12,7 @@ public class StoryScene : ScriptableObject
 
     [Space] 
     
-    [Tooltip("The item received when arriving in the scene")]  public string sceneReward = "Nones";
+    [Tooltip("The item received when arriving in the scene")]  public string sceneReward = "None";
     
     [Space]
     

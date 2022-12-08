@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,9 +8,9 @@ public class StoryNavigation : MonoBehaviour
 {
     public StoryScene[] Scenes;
     public GameObject TitleUI;
-    private Text titleText;
+    private TextMeshProUGUI titleText;
     public GameObject bodyUI;
-    private Text bodyText;
+    private TextMeshProUGUI bodyText;
 
     public GameObject buttonA;
     public GameObject buttonB;
@@ -19,24 +20,25 @@ public class StoryNavigation : MonoBehaviour
     private bool bValid;
     private bool cValid;
 
-    private Text buttonAText;
-    private Text buttonBText;
-    private Text buttonCText;
+    private TextMeshProUGUI buttonAText;
+    private TextMeshProUGUI buttonBText;
+    private TextMeshProUGUI buttonCText;
 
     private string currentScene = "Start";
     private string[] sceneTags;
 
+    public TextMeshProUGUI printInventory;
     public List<string> inventory;
-
+    
 
     // Start is called before the first frame update
     void Start()
     {
-        titleText = TitleUI.GetComponent<Text>();
-        bodyText = bodyUI.GetComponent<Text>();
-        buttonAText = buttonA.GetComponentInChildren<Text>();
-        buttonBText = buttonB.GetComponentInChildren<Text>();
-        buttonCText = buttonC.GetComponentInChildren<Text>(); //Get all the text components for easier access
+        titleText = TitleUI.GetComponent<TextMeshProUGUI>();
+        bodyText = bodyUI.GetComponent<TextMeshProUGUI>();
+        buttonAText = buttonA.GetComponentInChildren<TextMeshProUGUI>();
+        buttonBText = buttonB.GetComponentInChildren<TextMeshProUGUI>();
+        buttonCText = buttonC.GetComponentInChildren<TextMeshProUGUI>(); //Get all the text components for easier access
 
         sceneTags = new string[Scenes.Length]; //Initialize the tags array
         for (int i = 0; i < Scenes.Length; i++) //For each one...
@@ -44,7 +46,7 @@ public class StoryNavigation : MonoBehaviour
             sceneTags[i] = Scenes[i].sceneTag; //Get the story scene's tag for easier reference.
         }
         
-        titleText.text = Scenes[findIndex(currentScene)].sceneTitle; //Set the title text
+        titleText.text= Scenes[findIndex(currentScene)].sceneTitle; //Set the title text
         bodyText.text = Scenes[findIndex(currentScene)].sceneDescription; //And the body text
         
         renderChoices(); //Render the buttons.
@@ -56,6 +58,13 @@ public class StoryNavigation : MonoBehaviour
         titleText.text = Scenes[findIndex(currentScene)].sceneTitle; //Set the title text
         bodyText.text = Scenes[findIndex(currentScene)].sceneDescription; //And the body text
         renderChoices();
+
+        //Print Inventory
+        printInventory.text = " ";
+        foreach (string Item in inventory)
+        {
+            printInventory.text += Item + "\n";
+        }
     }
 
     private int findIndex(string tag) //This converts the scene tag into the position in the array for easier use.
