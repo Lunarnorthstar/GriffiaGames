@@ -16,12 +16,10 @@ MonoBehaviour:
   sceneReward: None
   sceneTitle: Breakfast.
   sceneDescription: You eat Breakfast. Why are you doing this again?
-  ChoiceA: Go Outside
-  ADestination: Outside
-  ATool: None
-  ChoiceB: Go Back to Bed
-  BDestination: Start
-  BTool: None
-  ChoiceC: None
-  CDestination: 
-  CTool: None
+  sceneChoices:
+  - choiceText: Go Outiside
+    destination: Outside
+    tool: None
+  - choiceText: Go Back to Bed
+    destination: Start
+    tool: None

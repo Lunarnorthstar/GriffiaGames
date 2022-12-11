@@ -12,33 +12,39 @@ public class StoryNavigation : MonoBehaviour
     public GameObject bodyUI;
     private TextMeshProUGUI bodyText;
 
-    public GameObject buttonA;
-    public GameObject buttonB;
-    public GameObject buttonC;
+    public GameObject[] buttons;
+    
 
-    private bool aValid;
-    private bool bValid;
-    private bool cValid;
+    private bool[] globalValid;
 
-    private TextMeshProUGUI buttonAText;
-    private TextMeshProUGUI buttonBText;
-    private TextMeshProUGUI buttonCText;
+    private TextMeshProUGUI[] buttonText;
 
     private string currentScene = "Start";
     private string[] sceneTags;
 
+    [Space]
+    
     public TextMeshProUGUI printInventory;
     public List<string> inventory;
+
+    [Space] private int day = 1;
+    private int money = 10;
     
 
     // Start is called before the first frame update
     void Start()
     {
         titleText = TitleUI.GetComponent<TextMeshProUGUI>();
-        bodyText = bodyUI.GetComponent<TextMeshProUGUI>();
-        buttonAText = buttonA.GetComponentInChildren<TextMeshProUGUI>();
-        buttonBText = buttonB.GetComponentInChildren<TextMeshProUGUI>();
-        buttonCText = buttonC.GetComponentInChildren<TextMeshProUGUI>(); //Get all the text components for easier access
+        bodyText = bodyUI.GetComponent<TextMeshProUGUI>(); //Set the title and body text components for easier access.
+
+        buttonText = new TextMeshProUGUI[buttons.Length]; //Initialize the button array
+
+        for (int i = 0; i < buttonText.Length; i++) //For each one...
+        {
+            buttonText[i] = buttons[i].GetComponentInChildren<TextMeshProUGUI>();
+        } //Get all the text components for easier access
+
+        globalValid = new bool[buttons.Length]; //Initialize the valid choice array
 
         sceneTags = new string[Scenes.Length]; //Initialize the tags array
         for (int i = 0; i < Scenes.Length; i++) //For each one...
@@ -60,7 +66,7 @@ public class StoryNavigation : MonoBehaviour
         renderChoices();
 
         //Print Inventory
-        printInventory.text = " ";
+        printInventory.text = " "; //Reset it so it doesn't just keep repeating
         foreach (string Item in inventory)
         {
             printInventory.text += Item + "\n";
@@ -77,153 +83,75 @@ public class StoryNavigation : MonoBehaviour
             }
         }
 
+        Debug.Log("Error! Scene tagged " + tag + " does not exist! Make sure it's spelled right and case sensitive. In the meantime, resetting position...");
         return 0; //Go back to zero if it's not found.
     }
 
     private void renderChoices() //This takes the button information and displays it on the buttons in the scene.
     {
         int location = findIndex(currentScene); //Get the scene index for easier use
-        
-        
-        if (Scenes[location].ChoiceA != "None") //If option A exists...
-        {
-            bool valid = false;
 
-            foreach (string item in inventory)
+        for (int i = 0; i < Scenes[location].sceneChoices.Length; i++) //For each option...
+        {
+            if (Scenes[location].sceneChoices[i].destination != "None") //If the option exists...
             {
-                if (item == Scenes[location].ATool)
+                bool valid = false; //Initialize a bool to track the valid state of the button. This is for cleaner code, mainly.
+                
+                foreach (string item in inventory) //For each item in the inventory...
                 {
-                    valid = true;
+                    if (item == Scenes[location].sceneChoices[i].tool) //If it's the tool you need to choose the option...
+                    {
+                        valid = true; //Then the option is valid.
+                    }
+                }
+
+                if ((Scenes[location].sceneChoices[i].tool == "None" || valid) && money >= Scenes[location].sceneChoices[i].coinCost) //If it's selectable (no requirement or you have the requirement) and you have enough money...
+                {
+                    buttons[i].SetActive(true); //Set the button to active
+                    buttonText[i].text = Scenes[location].sceneChoices[i].choiceText; //Activate the button and set it's text.
+                    buttonText[i].color = Color.black; //Make it black
+                    globalValid[i] = true; //Set the bool to allow the button to be selectable
+                }
+                else if ((Scenes[location].sceneChoices[i].tool != "None" && !valid) || money < Scenes[location].sceneChoices[i].coinCost) //If it's not selectable (has a requirement that you do not have) or you don't have the money
+                {
+                    buttons[i].SetActive(true);
+                    buttonText[i].text = Scenes[location].sceneChoices[i].choiceText; //Activate the button and set it's text.
+                    buttonText[i].color = Color.gray; //Make it grey
+                    globalValid[i] = false;
                 }
             }
-
-            if (Scenes[location].ATool == "None" || valid) //If it's selectable (no requirement or you have the requirement)
-            {
-                buttonA.SetActive(true);
-                buttonAText.text = Scenes[location].ChoiceA; //Activate the button and set it's text.
-                buttonAText.color = Color.black; //Make it grey
-                aValid = true;
-            }
-            else if (Scenes[location].ATool != "None" && !valid) //If it's not selectable (has a requirement that you do not have)
-            {
-                buttonA.SetActive(true);
-                buttonAText.text = Scenes[location].ChoiceA; //Activate the button and set it's text.
-                buttonAText.color = Color.gray; //Make it grey
-                aValid = false;
-            }
         }
-        else
-        {
-            buttonA.SetActive(false); //If it doesn't, deactivate the button.
-            aValid = false;
-        }
-        //Same for these other two, but with the other buttons.
-        if (Scenes[location].ChoiceB != "None")
-        {
-            bool valid = false;
 
-            foreach (string item in inventory)
-            {
-                if (item == Scenes[location].BTool)
-                {
-                    valid = true;
-                }
-            }
-
-            if (Scenes[location].BTool == "None" || valid) //If it's selectable (no requirement or you have the requirement)
-            {
-                buttonB.SetActive(true);
-                buttonBText.text = Scenes[location].ChoiceB; //Activate the button and set it's text.
-                buttonBText.color = Color.black; //Make it grey
-                bValid = true;
-            }
-            else if (Scenes[location].BTool != "None" && !valid) //If it's not selectable (has a requirement that you do not have)
-            {
-                buttonB.SetActive(true);
-                buttonBText.text = Scenes[location].ChoiceB; //Activate the button and set it's text.
-                buttonBText.color = Color.gray; //Make it grey
-                bValid = false;
-            }
-        }
-        else
+        for (int i = Scenes[location].sceneChoices.Length; i < buttons.Length; i++)
         {
-            buttonB.SetActive(false);
-            bValid = false;
-        }
-        
-        if (Scenes[location].ChoiceC != "None")
-        {
-            bool valid = false;
-
-            foreach (string item in inventory)
-            {
-                if (item == Scenes[location].CTool)
-                {
-                    valid = true;
-                }
-            }
-
-            if (Scenes[location].CTool == "None" || valid) //If it's selectable (no requirement or you have the requirement)
-            {
-                buttonC.SetActive(true);
-                buttonCText.text = Scenes[location].ChoiceC; //Activate the button and set it's text.
-                buttonCText.color = Color.black; //Make it grey
-                cValid = true;
-            }
-            else if (Scenes[location].CTool != "None" && !valid) //If it's not selectable (has a requirement that you do not have)
-            {
-                buttonC.SetActive(true);
-                buttonCText.text = Scenes[location].ChoiceC; //Activate the button and set it's text.
-                buttonCText.color = Color.gray; //Make it grey
-                cValid = false;
-            }
-        }
-        else
-        {
-            buttonC.SetActive(false);
-            cValid = false;
+            buttons[i].SetActive(false);
+            globalValid[i] = false;
         }
     }
 
-    public void ButtonInput(string input)
+
+
+
+    public void ButtonInput(int input)
     {
         int location = findIndex(currentScene);
-        switch (input)
+        
+        if (globalValid[input])
         {
-            case "a":
-                if (aValid)
-                {
-                    currentScene = Scenes[location].ADestination;
-                    PickUp();
-                }
-                else
-                {
-                    Debug.Log("A goes Boink");
-                }
-                break;
-            case "b" :
-                if (bValid)
-                {
-                    currentScene = Scenes[location].BDestination;
-                    PickUp();
-                }
-                else
-                {
-                    Debug.Log("B goes Boink");
-                }
-                break;
-            case "c" :
-                if (cValid)
-                {
-                    currentScene = Scenes[location].CDestination;
-                    PickUp();
-                }
-                else
-                {
-                    Debug.Log("C goes Boink");
-                }
-                break;
+            money -= Scenes[location].sceneChoices[input].coinCost;
+            if (Scenes[location].sceneChoices[input].advancesDay)
+            {
+                day++;
+            }
+            
+            currentScene = Scenes[location].sceneChoices[input].destination;
+            PickUp();
         }
+        else
+        {
+            Debug.Log( input + " goes Boink");
+        }
+                
     }
 
 

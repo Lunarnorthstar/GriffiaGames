@@ -16,12 +16,13 @@ MonoBehaviour:
   sceneReward: None
   sceneTitle: You Wake Up...
   sceneDescription: What a lovely day. Now test your project.
-  ChoiceA: Break the Cycle
-  ADestination: End
-  ATool: Meta
-  ChoiceB: Eat Breakfast
-  BDestination: Breakfast
-  BTool: None
-  ChoiceC: Go Outside
-  CDestination: Outside
-  CTool: None
+  sceneChoices:
+  - choiceText: Break the Cycle
+    destination: End
+    tool: Meta
+  - choiceText: Eat Breakfast
+    destination: Breakfast
+    tool: None
+  - choiceText: Go Outside
+    destination: Outside
+    tool: None

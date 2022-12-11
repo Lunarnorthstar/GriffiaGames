@@ -17,12 +17,7 @@ MonoBehaviour:
   sceneTitle: A nice day
   sceneDescription: Except that outside doesn't exist. You know this. Stop being
     difficult.
-  ChoiceA: Go Back to Bed
-  ADestination: Start
-  ATool: None
-  ChoiceB: None
-  BDestination: 
-  BTool: None
-  ChoiceC: None
-  CDestination: 
-  CTool: None
+  sceneChoices:
+  - choiceText: Go Back to Bed
+    destination: Start
+    tool: None

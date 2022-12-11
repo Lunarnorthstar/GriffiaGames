@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -21,32 +22,26 @@ public class StoryScene : ScriptableObject
     [Tooltip("The body text of the scene")]
     [TextArea(15, 20)] public string sceneDescription;
     
-    [Space]
     
-    [Tooltip("The text displayed on the topmost button")]
-    public string ChoiceA;
-    [Tooltip("The tag of the scene the topmost button will take you to")]
-    public string ADestination;
-    [Tooltip("The tag of the item required for this button")]
-    public string ATool = "None";
-    
-    [Space]
-    
-    [Tooltip("The text displayed on the middle button")]
-    public string ChoiceB;
-    [Tooltip("The tag of the scene the middle button will take you to")]
-    public string BDestination;
-    [Tooltip("The tag of the item required for this button")]
-    public string BTool = "None";
-    
-    [Space]
-    
-    [Tooltip("The text displayed on the bottom button")]
-    public string ChoiceC;
-    [Tooltip("The tag of the scene the bottom button will take you to")]
-    public string CDestination;
-    [Tooltip("The tag of the item required for this button")]
-    public string CTool = "None";
+    [System.Serializable]
+    public struct choice
+    {
+        [Tooltip("The text displayed on the topmost button")]
+        public string choiceText;
+        [Tooltip("The tag of the scene the topmost button will take you to")]
+        public string destination;
+        [Tooltip("The tag of the item required for this button")]
+        public string tool;
+        [Tooltip("Whether the choice advances the day counter")]
+        public bool advancesDay;
+
+        public int coinCost;
+    }
+    [Tooltip("Input 'None' (case sensitive) for no tool requirement")]
+    public choice[] sceneChoices;
+
+
+
 
 
 }
