@@ -11,6 +11,8 @@ public class StoryNavigation : MonoBehaviour
     private TextMeshProUGUI titleText;
     public GameObject bodyUI;
     private TextMeshProUGUI bodyText;
+    public GameObject statusUI;
+    private TextMeshProUGUI statusText;
 
     public GameObject[] buttons;
     
@@ -26,6 +28,7 @@ public class StoryNavigation : MonoBehaviour
     
     public TextMeshProUGUI printInventory;
     public List<string> inventory;
+    public List<string> secretInventory;
 
     [Space] private int day = 1;
     private int money = 10;
@@ -36,6 +39,7 @@ public class StoryNavigation : MonoBehaviour
     {
         titleText = TitleUI.GetComponent<TextMeshProUGUI>();
         bodyText = bodyUI.GetComponent<TextMeshProUGUI>(); //Set the title and body text components for easier access.
+        statusText = statusUI.GetComponent<TextMeshProUGUI>();
 
         buttonText = new TextMeshProUGUI[buttons.Length]; //Initialize the button array
 
@@ -63,6 +67,7 @@ public class StoryNavigation : MonoBehaviour
     {
         titleText.text = Scenes[findIndex(currentScene)].sceneTitle; //Set the title text
         bodyText.text = Scenes[findIndex(currentScene)].sceneDescription; //And the body text
+        statusText.text = "Day: " + day + "\n Coins: " + money;
         renderChoices();
 
         //Print Inventory
@@ -96,23 +101,48 @@ public class StoryNavigation : MonoBehaviour
             if (Scenes[location].sceneChoices[i].destination != "None") //If the option exists...
             {
                 bool valid = false; //Initialize a bool to track the valid state of the button. This is for cleaner code, mainly.
-                
+                bool locked = false;
+
                 foreach (string item in inventory) //For each item in the inventory...
                 {
                     if (item == Scenes[location].sceneChoices[i].tool) //If it's the tool you need to choose the option...
                     {
                         valid = true; //Then the option is valid.
                     }
+                    
+                    if (item == Scenes[location].sceneChoices[i].lockoutTool) //If it's the tool you need to choose the option...
+                    {
+                        valid = false; //Then the option is not valid.
+                        locked = true; //Make sure the next loop knows that too.
+                    }
                 }
 
-                if ((Scenes[location].sceneChoices[i].tool == "None" || valid) && money >= Scenes[location].sceneChoices[i].coinCost) //If it's selectable (no requirement or you have the requirement) and you have enough money...
+                if (!locked)
+                {
+                    foreach (string item in secretInventory) //For each item in the inventory...
+                    {
+                        if (item == Scenes[location].sceneChoices[i].tool) //If it's the tool you need to choose the option...
+                        {
+                            valid = true; //Then the option is valid.
+                        }
+                        
+                        if (item == Scenes[location].sceneChoices[i].lockoutTool) //If it's the tool you need to choose the option...
+                        {
+                            valid = false; //Then the option is not valid.
+                        }
+                    }
+                }
+                
+                
+
+                if ((Scenes[location].sceneChoices[i].tool == "None" || valid) && money >= Scenes[location].sceneChoices[i].coinCost && !locked) //If it's selectable (no requirement or you have the requirement) and you have enough money...
                 {
                     buttons[i].SetActive(true); //Set the button to active
                     buttonText[i].text = Scenes[location].sceneChoices[i].choiceText; //Activate the button and set it's text.
                     buttonText[i].color = Color.black; //Make it black
                     globalValid[i] = true; //Set the bool to allow the button to be selectable
                 }
-                else if ((Scenes[location].sceneChoices[i].tool != "None" && !valid) || money < Scenes[location].sceneChoices[i].coinCost) //If it's not selectable (has a requirement that you do not have) or you don't have the money
+                else if ((Scenes[location].sceneChoices[i].tool != "None" && !valid) || money < Scenes[location].sceneChoices[i].coinCost || locked) //If it's not selectable (has a requirement that you do not have) or you don't have the money
                 {
                     buttons[i].SetActive(true);
                     buttonText[i].text = Scenes[location].sceneChoices[i].choiceText; //Activate the button and set it's text.
@@ -161,6 +191,11 @@ public class StoryNavigation : MonoBehaviour
         if (Scenes[location].sceneReward != "None")
         {
             inventory.Add(Scenes[location].sceneReward);
+        }
+        
+        if (Scenes[location].secretReward != "None")
+        {
+            secretInventory.Add(Scenes[location].secretReward);
         }
     }
 }

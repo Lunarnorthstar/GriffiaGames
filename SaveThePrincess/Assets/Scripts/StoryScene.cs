@@ -14,6 +14,9 @@ public class StoryScene : ScriptableObject
     [Space] 
     
     [Tooltip("The item received when arriving in the scene")]  public string sceneReward = "None";
+
+    [Tooltip("The secret item received when arriving in the scene")]
+    public string secretReward = "None";
     
     [Space]
     
@@ -32,6 +35,8 @@ public class StoryScene : ScriptableObject
         public string destination;
         [Tooltip("The tag of the item required for this button")]
         public string tool;
+        [Tooltip("The tag of the item that will prevent you from using the button")]
+        public string lockoutTool;
         [Tooltip("Whether the choice advances the day counter")]
         public bool advancesDay;
 

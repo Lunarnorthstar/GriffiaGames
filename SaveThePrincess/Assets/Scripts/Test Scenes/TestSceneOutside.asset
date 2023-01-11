@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sceneTag: Outside
   sceneReward: Meta
+  secretReward: A pear
   sceneTitle: A nice day
   sceneDescription: Except that outside doesn't exist. You know this. Stop being
     difficult.
@@ -21,3 +22,6 @@ MonoBehaviour:
   - choiceText: Go Back to Bed
     destination: Start
     tool: None
+    lockoutTool: 
+    advancesDay: 1
+    coinCost: 0

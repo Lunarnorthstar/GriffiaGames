@@ -14,12 +14,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sceneTag: Breakfast
   sceneReward: None
+  secretReward: None
   sceneTitle: Breakfast.
   sceneDescription: You eat Breakfast. Why are you doing this again?
   sceneChoices:
   - choiceText: Go Outiside
     destination: Outside
     tool: None
+    lockoutTool: 
+    advancesDay: 0
+    coinCost: 0
   - choiceText: Go Back to Bed
     destination: Start
     tool: None
+    lockoutTool: 
+    advancesDay: 1
+    coinCost: 0

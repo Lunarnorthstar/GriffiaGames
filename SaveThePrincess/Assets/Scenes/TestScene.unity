@@ -283,6 +283,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1721541061 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2713526930373469409, guid: d1e3172a4f58b0340b9e766500cbfb74, type: 3}
+  m_PrefabInstance: {fileID: 1965713209101920433}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1965713209101920433
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -453,6 +458,10 @@ PrefabInstance:
     - target: {fileID: 5180681731210835726, guid: d1e3172a4f58b0340b9e766500cbfb74, type: 3}
       propertyPath: m_fontColor32.rgba
       value: 4278190080
+      objectReference: {fileID: 0}
+    - target: {fileID: 8550796992748132893, guid: d1e3172a4f58b0340b9e766500cbfb74, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 110
       objectReference: {fileID: 0}
     - target: {fileID: 8991482192196406804, guid: d1e3172a4f58b0340b9e766500cbfb74, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
@@ -627,6 +636,10 @@ PrefabInstance:
       propertyPath: buttonC
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 2856716023634630591, guid: 369d6399c4568f7469229191b9dc70e0, type: 3}
+      propertyPath: statusUI
+      value: 
+      objectReference: {fileID: 1721541061}
     - target: {fileID: 2856716023634630591, guid: 369d6399c4568f7469229191b9dc70e0, type: 3}
       propertyPath: printInventory
       value: 
