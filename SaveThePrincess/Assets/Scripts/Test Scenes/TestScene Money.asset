@@ -10,26 +10,23 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 62cc63572bed93644bb5582fd7c48b1b, type: 3}
-  m_Name: TestSceneOutside
+  m_Name: TestScene Money
   m_EditorClassIdentifier: 
-  sceneTag: Outside
-  sceneTitle: A nice day
-  sceneDescription: Except that outside doesn't exist. You know this. Stop being
-    difficult.
+  sceneTag: Rich
+  sceneTitle: WTF
+  sceneDescription: 'No really, did you hack a demo showcase? There''s no way to
+    get that much money without hacking the game.
+
+
+    Ok then I guess... now that
+    outside exists all the people outside exist too. That includes the FBI, so since
+    you''re so rich I hope you enjoy doing your taxes.'
   sceneChoices:
-  - choiceText: Go Back to Bed
+  - choiceText: Delete The Outside Expansion
     destination: Start
     tool: None
     lockoutTool: None
     advancesDay: 1
     coinCost: 0
-    choiceReward: Meta
-    secretReward: None
-  - choiceText: Buy The Outside Expansion (999g)
-    destination: Rich
-    tool: None
-    lockoutTool: None
-    advancesDay: 1
-    coinCost: 999
     choiceReward: None
-    secretReward: Taxes
+    secretReward: None

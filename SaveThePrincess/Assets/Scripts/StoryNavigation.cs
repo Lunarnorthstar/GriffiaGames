@@ -31,7 +31,7 @@ public class StoryNavigation : MonoBehaviour
     public List<string> secretInventory;
 
     [Space] private int day = 1;
-    private int money = 10;
+    [SerializeField] private int money = 10;
     
 
     // Start is called before the first frame update
@@ -61,6 +61,7 @@ public class StoryNavigation : MonoBehaviour
         
         renderChoices(); //Render the buttons.
     }
+    
 
     // Update is called once per frame
     void Update()
@@ -77,6 +78,7 @@ public class StoryNavigation : MonoBehaviour
             printInventory.text += Item + "\n";
         }
     }
+    
 
     private int findIndex(string tag) //This converts the scene tag into the position in the array for easier use.
     {
@@ -91,6 +93,7 @@ public class StoryNavigation : MonoBehaviour
         Debug.Log("Error! Scene tagged " + tag + " does not exist! Make sure it's spelled right and case sensitive. In the meantime, resetting position...");
         return 0; //Go back to zero if it's not found.
     }
+    
 
     private void renderChoices() //This takes the button information and displays it on the buttons in the scene.
     {
@@ -100,49 +103,14 @@ public class StoryNavigation : MonoBehaviour
         {
             if (Scenes[location].sceneChoices[i].destination != "None") //If the option exists...
             {
-                bool valid = false; //Initialize a bool to track the valid state of the button. This is for cleaner code, mainly.
-                bool locked = false;
-
-                foreach (string item in inventory) //For each item in the inventory...
-                {
-                    if (item == Scenes[location].sceneChoices[i].tool) //If it's the tool you need to choose the option...
-                    {
-                        valid = true; //Then the option is valid.
-                    }
-                    
-                    if (item == Scenes[location].sceneChoices[i].lockoutTool) //If it's the tool you need to choose the option...
-                    {
-                        valid = false; //Then the option is not valid.
-                        locked = true; //Make sure the next loop knows that too.
-                    }
-                }
-
-                if (!locked)
-                {
-                    foreach (string item in secretInventory) //For each item in the inventory...
-                    {
-                        if (item == Scenes[location].sceneChoices[i].tool) //If it's the tool you need to choose the option...
-                        {
-                            valid = true; //Then the option is valid.
-                        }
-                        
-                        if (item == Scenes[location].sceneChoices[i].lockoutTool) //If it's the tool you need to choose the option...
-                        {
-                            valid = false; //Then the option is not valid.
-                        }
-                    }
-                }
-                
-                
-
-                if ((Scenes[location].sceneChoices[i].tool == "None" || valid) && money >= Scenes[location].sceneChoices[i].coinCost && !locked) //If it's selectable (no requirement or you have the requirement) and you have enough money...
+                if (IsChoiceValid(Scenes[location].sceneChoices[i])) //If the choice can be selected...
                 {
                     buttons[i].SetActive(true); //Set the button to active
                     buttonText[i].text = Scenes[location].sceneChoices[i].choiceText; //Activate the button and set it's text.
                     buttonText[i].color = Color.black; //Make it black
                     globalValid[i] = true; //Set the bool to allow the button to be selectable
                 }
-                else if ((Scenes[location].sceneChoices[i].tool != "None" && !valid) || money < Scenes[location].sceneChoices[i].coinCost || locked) //If it's not selectable (has a requirement that you do not have) or you don't have the money
+                else //If the choice is invalid for any reason...
                 {
                     buttons[i].SetActive(true);
                     buttonText[i].text = Scenes[location].sceneChoices[i].choiceText; //Activate the button and set it's text.
@@ -152,50 +120,96 @@ public class StoryNavigation : MonoBehaviour
             }
         }
 
-        for (int i = Scenes[location].sceneChoices.Length; i < buttons.Length; i++)
+        for (int i = Scenes[location].sceneChoices.Length; i < buttons.Length; i++) //Clean up the buttons that aren't being used
         {
-            buttons[i].SetActive(false);
-            globalValid[i] = false;
+            buttons[i].SetActive(false); //By setting them to inactive
+            globalValid[i] = false; //And making them unpressable.
         }
     }
+    
 
-
-
-
-    public void ButtonInput(int input)
+    public bool IsChoiceValid(StoryScene.choice choice) //This determines whether a given choice is selectable or not.
     {
-        int location = findIndex(currentScene);
-        
-        if (globalValid[input])
+        if (choice.tool != "None")
         {
-            money -= Scenes[location].sceneChoices[input].coinCost;
-            if (Scenes[location].sceneChoices[input].advancesDay)
+            bool hasTool = false;
+            foreach (string item in inventory) //For each item in the inventory...
             {
-                day++;
+                if (item == choice.tool) //If it's the tool you need to choose the option...
+                {
+                    hasTool = true; //Mark that you have the tool.
+                }
+            }
+            foreach (string item in secretInventory) //For each item in the secret inventory...
+            {
+                if (item == choice.tool) //If it's the tool you need to choose the option...
+                {
+                    hasTool = true; //Mark that you have the tool.
+                }
+            }
+
+            if (hasTool == false) //If you didn't have the tool...
+            {
+                return false; //Then return false.
+            }
+        }
+        
+        
+        if (choice.lockoutTool != "None") //If there's a tool that prevents you from picking the option...
+        {
+            foreach (string item in inventory) //For each item in the inventory...
+            {
+                if (item == choice.lockoutTool) //If it's the tool that locks the option...
+                {
+                    return false; //Then return false.
+                }
+            }
+            foreach (string item in secretInventory) //For each item in the secret inventory...
+            {
+                if (item == choice.lockoutTool) //If it's the tool that locks the option...
+                {
+                    return false; //Then return false.
+                }
+            }
+        }
+
+        if (money < choice.coinCost) //If you don't have enough money...
+        {
+            return false; //Then return false.
+        }
+
+        return true; //If none of the above are false, then return true.
+    }
+    
+
+    public void ButtonInput(int input) //This handles the input from the buttons.
+    {
+        StoryScene.choice chosen = Scenes[findIndex(currentScene)].sceneChoices[input]; //Convert the input into a quick choice variable.
+        
+        if (globalValid[input]) //If it's valid (determined earlier)
+        {
+            money -= chosen.coinCost; //Subtract the coin cost from your coin total.
+            if (chosen.advancesDay) //If the choice advances the day...
+            {
+                day++; //Increment the day variable.
             }
             
-            currentScene = Scenes[location].sceneChoices[input].destination;
-            PickUp();
+            if (chosen.choiceReward != "None") //If the choice has a reward...
+            {
+                inventory.Add(chosen.choiceReward); //Add it to your inventory.
+            }
+        
+            if (chosen.secretReward != "None") //And ditto with secret rewards.
+            {
+                secretInventory.Add(chosen.secretReward);
+            }
+            
+            currentScene = chosen.destination; //Move to the destination.
         }
         else
         {
-            Debug.Log( input + " goes Boink");
+            Debug.Log( input + " goes Boink"); //Notify the debug log that the choice couldn't be pressed.
         }
                 
-    }
-
-
-    private void PickUp()
-    {
-        int location = findIndex(currentScene);
-        if (Scenes[location].sceneReward != "None")
-        {
-            inventory.Add(Scenes[location].sceneReward);
-        }
-        
-        if (Scenes[location].secretReward != "None")
-        {
-            secretInventory.Add(Scenes[location].secretReward);
-        }
     }
 }

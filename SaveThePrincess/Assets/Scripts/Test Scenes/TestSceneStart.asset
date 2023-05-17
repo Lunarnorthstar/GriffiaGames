@@ -13,26 +13,30 @@ MonoBehaviour:
   m_Name: TestSceneStart
   m_EditorClassIdentifier: 
   sceneTag: Start
-  sceneReward: None
-  secretReward: None
   sceneTitle: You Wake Up...
   sceneDescription: What a lovely day. Now test your project.
   sceneChoices:
   - choiceText: Break the Cycle
     destination: End
     tool: Meta
-    lockoutTool: 
+    lockoutTool: None
     advancesDay: 0
     coinCost: 0
-  - choiceText: Eat Breakfast
+    choiceReward: None
+    secretReward: None
+  - choiceText: Eat Breakfast (10g)
     destination: Breakfast
     tool: None
     lockoutTool: Meta
     advancesDay: 0
     coinCost: 10
+    choiceReward: None
+    secretReward: None
   - choiceText: Go Outside
     destination: Outside
     tool: None
     lockoutTool: Meta
     advancesDay: 0
     coinCost: 0
+    choiceReward: None
+    secretReward: None

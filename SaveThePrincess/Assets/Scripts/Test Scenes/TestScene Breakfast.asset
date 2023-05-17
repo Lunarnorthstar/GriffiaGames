@@ -13,20 +13,22 @@ MonoBehaviour:
   m_Name: TestScene Breakfast
   m_EditorClassIdentifier: 
   sceneTag: Breakfast
-  sceneReward: None
-  secretReward: None
   sceneTitle: Breakfast.
   sceneDescription: You eat Breakfast. Why are you doing this again?
   sceneChoices:
   - choiceText: Go Outiside
     destination: Outside
     tool: None
-    lockoutTool: 
+    lockoutTool: None
     advancesDay: 0
     coinCost: 0
+    choiceReward: None
+    secretReward: None
   - choiceText: Go Back to Bed
     destination: Start
     tool: None
-    lockoutTool: 
+    lockoutTool: None
     advancesDay: 1
     coinCost: 0
+    choiceReward: None
+    secretReward: None

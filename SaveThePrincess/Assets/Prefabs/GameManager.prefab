@@ -47,10 +47,12 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 6c97bb1787726724da313d75fb040ebe, type: 2}
   - {fileID: 11400000, guid: 8b38bc27873450f4bb45978cb0f394c5, type: 2}
   - {fileID: 11400000, guid: 1275e25b2674cf645b021f77efdcac41, type: 2}
+  - {fileID: 11400000, guid: d340d010168de9e48baf5d0d28970d89, type: 2}
   - {fileID: 11400000, guid: bd9e9329681648343a5495eca5b03e8a, type: 2}
   TitleUI: {fileID: 0}
   bodyUI: {fileID: 0}
-  buttonA: {fileID: 0}
-  buttonB: {fileID: 0}
-  buttonC: {fileID: 0}
+  statusUI: {fileID: 0}
+  buttons: []
+  printInventory: {fileID: 0}
   inventory: []
+  secretInventory: []

@@ -11,15 +11,8 @@ public class StoryScene : ScriptableObject
     [Tooltip("The internal name for the scene looked for by the game when moving between scenes")]
     public string sceneTag;
 
-    [Space] 
-    
-    [Tooltip("The item received when arriving in the scene")]  public string sceneReward = "None";
-
-    [Tooltip("The secret item received when arriving in the scene")]
-    public string secretReward = "None";
-    
     [Space]
-    
+
     [Tooltip("The name displayed on the header text for the scene")]
     public string sceneTitle;
     [Tooltip("The body text of the scene")]
@@ -41,6 +34,11 @@ public class StoryScene : ScriptableObject
         public bool advancesDay;
 
         public int coinCost;
+        
+        [Tooltip("The item received when making the choice")]  
+        public string choiceReward;
+        [Tooltip("The secret item received when making the choice")]
+        public string secretReward;
     }
     [Tooltip("Input 'None' (case sensitive) for no tool requirement")]
     public choice[] sceneChoices;
