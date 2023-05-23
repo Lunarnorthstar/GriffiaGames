@@ -37,8 +37,8 @@ MonoBehaviour:
     coinCost: 0
     choiceReward: None
     secretReward: None
-  - choiceText: Ask Her Out
-    destination: Talk4
+  - choiceText: Wait What Happens Next?!
+    destination: Talk5
     tool: None
     lockoutTool: None
     advancesDay: 0

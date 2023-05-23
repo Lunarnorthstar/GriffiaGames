@@ -1,0 +1,45 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62cc63572bed93644bb5582fd7c48b1b, type: 3}
+  m_Name: Market_Talk6
+  m_EditorClassIdentifier: 
+  sceneTag: Talk6
+  sceneTitle: '"Adventure"'
+  sceneDescription: "Oh ok, what about this, last week you need it to deal with the
+    insane increase on Taxes that was stablish by the new monarchy, Casandra is very
+    worry that, your new child will not have the opportunity to get a good education,
+    because now everything is more expensive. You wonder if, not saving the princess
+    was a mistake, maybe if you had save her, the kingdom would had not fallen in
+    to chaos, and things would be better. Then you got to deal with the delay shipping
+    for next month, don\u2019t get me started. They keep delaying your request and
+    you started to suspect that may be, they are lying to you, and all of this is
+    actually a scam. You are unsure how to break the news to Casandra, she has been
+    so stress this couple of days, that you think that the poor Foolee will not be
+    able to take more of it. So is THIS ENOUGH adventure for you? Does this satisfy
+    your desire for Adventure??"
+  sceneChoices:
+  - choiceText: RESTART ALREADY
+    destination: Start
+    tool: None
+    lockoutTool: None
+    advancesDay: 0
+    coinCost: 0
+    choiceReward: None
+    secretReward: None
+  - choiceText: No It Doesn't
+    destination: Talk7
+    tool: None
+    lockoutTool: None
+    advancesDay: 0
+    coinCost: 0
+    choiceReward: None
+    secretReward: None

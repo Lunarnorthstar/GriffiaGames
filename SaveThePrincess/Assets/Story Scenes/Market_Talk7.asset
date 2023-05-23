@@ -1,0 +1,66 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62cc63572bed93644bb5582fd7c48b1b, type: 3}
+  m_Name: Market_Talk7
+  m_EditorClassIdentifier: 
+  sceneTag: Talk7
+  sceneTitle: The End
+  sceneDescription: "OH OK THAT IS HOW YOU ARE GOING TO BE, EH? Yeah I make this
+    game with a great story, and here you are, dating a random Foolee and\u2026and,
+    just wasting my time! Oh yeah I see how it is. Ok fine, what about this? One
+    night, as you return to your home, you are meet with a horrible scenery; the
+    shop front door is smash and the window are broken. As you rush inside of the
+    shop, you see at the center of the room a dead body, Casandra. You fall to your
+    knees and start crying. Who could had done this? And why? You run to your room
+    and pull out a small box, in it is your old sword. You rush to the forest in
+    hope to find the culprit, after a few days, you finally found them, a band of
+    bandit. In a cage, you notice your son, chained and bruised. You burst in to
+    rage and charge in to the camp with no regard to your safety. You slay a few
+    griffolk that were cough of guard, but the next couple ones where already ready
+    to face you. You kill a couple more, before you feel a painful sting, you know
+    what it is, but you are so angry that you keep slashing and stabbing the next
+    griffolk that stand in your way. You feel another sting, and another one\u2026you
+    don\u2019t feel your legs and you fall to the ground\u2026broken, dead. \nTHE
+    END"
+  sceneChoices:
+  - choiceText: Restart
+    destination: Start
+    tool: None
+    lockoutTool: None
+    advancesDay: 0
+    coinCost: 0
+    choiceReward: None
+    secretReward: None
+  - choiceText: Restart
+    destination: Start
+    tool: None
+    lockoutTool: None
+    advancesDay: 0
+    coinCost: 0
+    choiceReward: None
+    secretReward: None
+  - choiceText: Restart
+    destination: Start
+    tool: None
+    lockoutTool: None
+    advancesDay: 0
+    coinCost: 0
+    choiceReward: None
+    secretReward: None
+  - choiceText: Restart
+    destination: Start
+    tool: None
+    lockoutTool: None
+    advancesDay: 0
+    coinCost: 0
+    choiceReward: None
+    secretReward: None
