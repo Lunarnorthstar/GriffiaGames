@@ -13,6 +13,7 @@ public class StoryNavigation : MonoBehaviour
     private TextMeshProUGUI bodyText;
     public GameObject statusUI;
     private TextMeshProUGUI statusText;
+    public GameObject background;
 
     public GameObject[] buttons;
     
@@ -27,10 +28,11 @@ public class StoryNavigation : MonoBehaviour
     [Space]
     
     public TextMeshProUGUI printInventory;
-    public List<string> inventory;
-    public List<string> secretInventory;
+    public List<StoryScene.Item> inventory;
+
 
     [Space] private int day = 1;
+    public int startingCoins = 10;
     [SerializeField] private int money = 10;
     
 
@@ -40,16 +42,16 @@ public class StoryNavigation : MonoBehaviour
         titleText = TitleUI.GetComponent<TextMeshProUGUI>();
         bodyText = bodyUI.GetComponent<TextMeshProUGUI>(); //Set the title and body text components for easier access.
         statusText = statusUI.GetComponent<TextMeshProUGUI>();
-
+        
+        
         buttonText = new TextMeshProUGUI[buttons.Length]; //Initialize the button array
-
         for (int i = 0; i < buttonText.Length; i++) //For each one...
         {
             buttonText[i] = buttons[i].GetComponentInChildren<TextMeshProUGUI>();
         } //Get all the text components for easier access
-
         globalValid = new bool[buttons.Length]; //Initialize the valid choice array
 
+        
         sceneTags = new string[Scenes.Length]; //Initialize the tags array
         for (int i = 0; i < Scenes.Length; i++) //For each one...
         {
@@ -68,14 +70,23 @@ public class StoryNavigation : MonoBehaviour
     {
         titleText.text = Scenes[findIndex(currentScene)].sceneTitle; //Set the title text
         bodyText.text = Scenes[findIndex(currentScene)].sceneDescription; //And the body text
+        if (Scenes[findIndex(currentScene)].backgroundImage != null)
+        {
+            background.GetComponent<Image>().sprite = Scenes[findIndex(currentScene)].backgroundImage;
+        }
+        
         statusText.text = "Day: " + day + "\nCoins: " + money;
         renderChoices();
 
         //Print Inventory
         printInventory.text = " "; //Reset it so it doesn't just keep repeating
-        foreach (string Item in inventory)
+        printInventory.text += "Coins: " + money + "\n";
+        foreach (var item in inventory)
         {
-            printInventory.text += Item + "\n";
+            if (!item.isSecret)
+            {
+                printInventory.text += item.name + "\n";
+            }
         }
     }
     
@@ -133,16 +144,9 @@ public class StoryNavigation : MonoBehaviour
         if (choice.tool != "None")
         {
             bool hasTool = false;
-            foreach (string item in inventory) //For each item in the inventory...
+            foreach (var item in inventory) //For each item in the inventory...
             {
-                if (item == choice.tool) //If it's the tool you need to choose the option...
-                {
-                    hasTool = true; //Mark that you have the tool.
-                }
-            }
-            foreach (string item in secretInventory) //For each item in the secret inventory...
-            {
-                if (item == choice.tool) //If it's the tool you need to choose the option...
+                if (item.name == choice.tool) //If it's the tool you need to choose the option...
                 {
                     hasTool = true; //Mark that you have the tool.
                 }
@@ -157,16 +161,9 @@ public class StoryNavigation : MonoBehaviour
         
         if (choice.lockoutTool != "None") //If there's a tool that prevents you from picking the option...
         {
-            foreach (string item in inventory) //For each item in the inventory...
+            foreach (var item in inventory) //For each item in the inventory...
             {
-                if (item == choice.lockoutTool) //If it's the tool that locks the option...
-                {
-                    return false; //Then return false.
-                }
-            }
-            foreach (string item in secretInventory) //For each item in the secret inventory...
-            {
-                if (item == choice.lockoutTool) //If it's the tool that locks the option...
+                if (item.name == choice.lockoutTool) //If it's the tool that locks the option...
                 {
                     return false; //Then return false.
                 }
@@ -188,23 +185,46 @@ public class StoryNavigation : MonoBehaviour
         
         if (globalValid[input]) //If it's valid (determined earlier)
         {
-            money -= chosen.coinCost; //Subtract the coin cost from your coin total.
-            if (chosen.advancesDay) //If the choice advances the day...
+            if (chosen.destination == "RESET") //If the button ends the story...
             {
-                day++; //Increment the day variable.
+                money = startingCoins; //Reset to the starting coins
+                day = 0; //Reset the day count.
+                for (int i = 0; i < inventory.Count; i++) //Remove all resettable items
+                {
+                    if (inventory[i].resets)
+                    {
+                        inventory.Remove(inventory[i]);
+                    }
+                }
+
+                if (chosen.rewards.Length > 0) //If the choice has a reward...
+                {
+                    foreach (var item in chosen.rewards)
+                    {
+                        inventory.Add(item); //Add it to your inventory.
+                    }
+                }
+                
+                currentScene = "Start";
             }
-            
-            if (chosen.choiceReward != "None") //If the choice has a reward...
+            else //if the button does not end the story...
             {
-                inventory.Add(chosen.choiceReward); //Add it to your inventory.
+                money -= chosen.coinCost; //Subtract the coin cost from your coin total.
+                if (chosen.advancesDay) //If the choice advances the day...
+                {
+                    day++; //Increment the day variable.
+                }
+
+                if (chosen.rewards.Length > 0) //If the choice has a reward...
+                {
+                    foreach (var item in chosen.rewards)
+                    {
+                        inventory.Add(item); //Add it to your inventory.
+                    }
+                }
+
+                currentScene = chosen.destination; //Move to the destination.
             }
-        
-            if (chosen.secretReward != "None") //And ditto with secret rewards.
-            {
-                secretInventory.Add(chosen.secretReward);
-            }
-            
-            currentScene = chosen.destination; //Move to the destination.
         }
         else
         {

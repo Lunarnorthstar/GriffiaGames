@@ -16,6 +16,7 @@ MonoBehaviour:
   sceneTitle: A nice day
   sceneDescription: Except that outside doesn't exist. You know this. Stop being
     difficult.
+  backgroundImage: {fileID: 0}
   sceneChoices:
   - choiceText: Go Back to Bed
     destination: Start
@@ -23,13 +24,14 @@ MonoBehaviour:
     lockoutTool: None
     advancesDay: 1
     coinCost: 0
-    choiceReward: Meta
-    secretReward: None
+    rewards:
+    - name: Meta
+      resets: 1
+      isSecret: 1
   - choiceText: Buy The Outside Expansion (999g)
     destination: Rich
     tool: None
     lockoutTool: None
     advancesDay: 1
     coinCost: 999
-    choiceReward: None
-    secretReward: Taxes
+    rewards: []

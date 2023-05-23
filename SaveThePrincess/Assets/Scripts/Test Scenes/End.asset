@@ -13,19 +13,21 @@ MonoBehaviour:
   m_Name: End
   m_EditorClassIdentifier: 
   sceneTag: End
-  sceneReward: None
   sceneTitle: You Win
   sceneDescription: 'Congratulations, you nagivated three menus.
 
 
     This took
     like an hour to do, but it works!'
-  ChoiceA: None
-  ADestination: 
-  ATool: None
-  ChoiceB: None
-  BDestination: 
-  BTool: None
-  ChoiceC: None
-  CDestination: 
-  CTool: None
+  backgroundImage: {fileID: 0}
+  sceneChoices:
+  - choiceText: Play Again
+    destination: RESET
+    tool: None
+    lockoutTool: None
+    advancesDay: 0
+    coinCost: 0
+    rewards:
+    - name: Prestige Token
+      resets: 0
+      isSecret: 0

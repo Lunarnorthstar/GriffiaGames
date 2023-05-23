@@ -15,6 +15,7 @@ MonoBehaviour:
   sceneTag: Start
   sceneTitle: You Wake Up...
   sceneDescription: What a lovely day. Now test your project.
+  backgroundImage: {fileID: 21300000, guid: 40ba62d9075e85241b922aa1b72834ce, type: 3}
   sceneChoices:
   - choiceText: Break the Cycle
     destination: End
@@ -22,21 +23,18 @@ MonoBehaviour:
     lockoutTool: None
     advancesDay: 0
     coinCost: 0
-    choiceReward: None
-    secretReward: None
+    rewards: []
   - choiceText: Eat Breakfast (10g)
     destination: Breakfast
     tool: None
     lockoutTool: Meta
     advancesDay: 0
     coinCost: 10
-    choiceReward: None
-    secretReward: None
+    rewards: []
   - choiceText: Go Outside
     destination: Outside
     tool: None
     lockoutTool: Meta
     advancesDay: 0
     coinCost: 0
-    choiceReward: None
-    secretReward: None
+    rewards: []

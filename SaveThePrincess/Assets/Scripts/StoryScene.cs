@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 [CreateAssetMenu(fileName = "Story Scene", menuName = "ScriptableObjects/Story Scene", order = 1)]
 
@@ -17,7 +18,17 @@ public class StoryScene : ScriptableObject
     public string sceneTitle;
     [Tooltip("The body text of the scene")]
     [TextArea(15, 20)] public string sceneDescription;
+
+    [Tooltip("The scene background if it changes the background")]
+    public Sprite backgroundImage;
     
+    [System.Serializable]
+    public struct Item
+    {
+        public string name;
+        public bool resets;
+        public bool isSecret;
+    }
     
     [System.Serializable]
     public struct choice
@@ -34,11 +45,8 @@ public class StoryScene : ScriptableObject
         public bool advancesDay;
 
         public int coinCost;
-        
-        [Tooltip("The item received when making the choice")]  
-        public string choiceReward;
-        [Tooltip("The secret item received when making the choice")]
-        public string secretReward;
+
+        public Item[] rewards;
     }
     [Tooltip("Input 'None' (case sensitive) for no tool requirement")]
     public choice[] sceneChoices;

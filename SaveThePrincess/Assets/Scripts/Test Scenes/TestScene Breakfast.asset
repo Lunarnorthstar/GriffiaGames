@@ -15,6 +15,7 @@ MonoBehaviour:
   sceneTag: Breakfast
   sceneTitle: Breakfast.
   sceneDescription: You eat Breakfast. Why are you doing this again?
+  backgroundImage: {fileID: 0}
   sceneChoices:
   - choiceText: Go Outiside
     destination: Outside
