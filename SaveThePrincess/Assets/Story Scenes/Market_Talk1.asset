@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62cc63572bed93644bb5582fd7c48b1b, type: 3}
+  m_Name: Market_Talk1
+  m_EditorClassIdentifier: 
+  sceneTag: Talk1
+  sceneTitle: Chatting
+  sceneDescription: "You say sorry to the Foolee and tell her that you have been
+    busy lately. \n\u201COh really? Well, what have you been busy with, mmm?\u201D"
+  sceneChoices:
+  - choiceText: Stop Talking and Shop
+    destination: General Store
+    tool: None
+    lockoutTool: None
+    advancesDay: 0
+    coinCost: 0
+    choiceReward: None
+    secretReward: Talked
+  - choiceText: Tell Her What You've Doing
+    destination: Talk2
+    tool: None
+    lockoutTool: None
+    advancesDay: 0
+    coinCost: 0
+    choiceReward: None
+    secretReward: None

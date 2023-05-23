@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62cc63572bed93644bb5582fd7c48b1b, type: 3}
+  m_Name: Market_Talk3
+  m_EditorClassIdentifier: 
+  sceneTag: Talk3
+  sceneTitle: Ok, This Is A Lot Of Chatting
+  sceneDescription: "The Foolee giggle and smile at you. \n\u201CPfff of course it
+    is easy, I mean for someone like you\u2026\u201D \nThe Foolee now is extremely
+    close to you, she give you a soft, yet playful punch on your arm. You face her
+    and notice her beautiful eyes, they gleam with a radian light. You scratch your
+    head in embarrassment. "
+  sceneChoices:
+  - choiceText: Ask Her Out
+    destination: Talk4
+    tool: None
+    lockoutTool: None
+    advancesDay: 0
+    coinCost: 0
+    choiceReward: None
+    secretReward: None
+  - choiceText: Stop Talking AND SHOP
+    destination: General Store
+    tool: None
+    lockoutTool: None
+    advancesDay: 0
+    coinCost: 0
+    choiceReward: None
+    secretReward: Talked

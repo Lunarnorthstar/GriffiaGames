@@ -1,0 +1,51 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62cc63572bed93644bb5582fd7c48b1b, type: 3}
+  m_Name: Market_Remedy Shop
+  m_EditorClassIdentifier: 
+  sceneTag: Remedy Shop
+  sceneTitle: The Remedy Shop
+  sceneDescription: "You decide to go to the Remedy Shop. \nA tall Splicer greets
+    you. \u201COh hello Roll, long time no see. How may I help you today?\u201D"
+  sceneChoices:
+  - choiceText: Buy Some Medicine (3 gold)
+    destination: Remedy Shop
+    tool: None
+    lockoutTool: None
+    advancesDay: 0
+    coinCost: 3
+    choiceReward: General Medicine
+    secretReward: None
+  - choiceText: Buy Some Bandages (2 gold)
+    destination: Remedy Shop
+    tool: None
+    lockoutTool: None
+    advancesDay: 0
+    coinCost: 2
+    choiceReward: Bandages
+    secretReward: None
+  - choiceText: Buy Some Soft Tea (1 gold)
+    destination: Remedy Shop
+    tool: None
+    lockoutTool: None
+    advancesDay: 0
+    coinCost: 1
+    choiceReward: Bandages
+    secretReward: None
+  - choiceText: Go To Another Store
+    destination: Market
+    tool: None
+    lockoutTool: None
+    advancesDay: 0
+    coinCost: 0
+    choiceReward: None
+    secretReward: None

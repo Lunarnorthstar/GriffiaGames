@@ -1,0 +1,60 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62cc63572bed93644bb5582fd7c48b1b, type: 3}
+  m_Name: Market_General Store
+  m_EditorClassIdentifier: 
+  sceneTag: General Store
+  sceneTitle: The General Store
+  sceneDescription: "You decide to go to the General Store. \nA beautiful and cheerful
+    Foolee greets you. \u201COh hello there Roll! Good to see you again, you haven\u2019t
+    visited me for a while!\u201D "
+  sceneChoices:
+  - choiceText: Say You Are Sorry You Don't Visit More Often
+    destination: Talk1
+    tool: None
+    lockoutTool: Talked
+    advancesDay: 0
+    coinCost: 0
+    choiceReward: None
+    secretReward: None
+  - choiceText: Buy Some Rope (2 gold)
+    destination: General Store
+    tool: None
+    lockoutTool: None
+    advancesDay: 0
+    coinCost: 2
+    choiceReward: Rope
+    secretReward: None
+  - choiceText: Buy A Shovel (5 gold)
+    destination: General Store
+    tool: None
+    lockoutTool: None
+    advancesDay: 0
+    coinCost: 5
+    choiceReward: Shovel
+    secretReward: None
+  - choiceText: Buy Some Rations (3 gold)
+    destination: General Store
+    tool: None
+    lockoutTool: None
+    advancesDay: 0
+    coinCost: 3
+    choiceReward: 1 Day Of Rations
+    secretReward: None
+  - choiceText: Go To Another Store
+    destination: Market
+    tool: None
+    lockoutTool: None
+    advancesDay: 0
+    coinCost: 0
+    choiceReward: None
+    secretReward: None

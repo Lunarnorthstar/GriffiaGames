@@ -12,9 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62cc63572bed93644bb5582fd7c48b1b, type: 3}
   m_Name: Intro
   m_EditorClassIdentifier: 
-  sceneTag: Intro
-  sceneReward: None
-  sceneTitle: Introduction
+  sceneTag: Start
+  sceneTitle: Intro
   sceneDescription: "You are a Bavom knight called \u201CRoll\u201D, and you are
     on a very important mission; to save the Perfaunt Princess! An evil wizard has
     kidnapped her! \nThanks to some scouts, the King has been able to identify the
@@ -22,12 +21,12 @@ MonoBehaviour:
     for an experience adventurer like you. \nIn any case, you really should hurry
     up and save her, you never know what that evil wizard is doing with her.\nYou
     do not want to be late\u2026\r\n\r\n"
-  ChoiceA: Continue
-  ADestination: Market
-  ATool: None
-  ChoiceB: None
-  BDestination: None
-  BTool: None
-  ChoiceC: None
-  CDestination: None
-  CTool: None
+  sceneChoices:
+  - choiceText: Start
+    destination: Market
+    tool: None
+    lockoutTool: None
+    advancesDay: 0
+    coinCost: 0
+    choiceReward: None
+    secretReward: None

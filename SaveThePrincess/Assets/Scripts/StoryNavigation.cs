@@ -68,7 +68,7 @@ public class StoryNavigation : MonoBehaviour
     {
         titleText.text = Scenes[findIndex(currentScene)].sceneTitle; //Set the title text
         bodyText.text = Scenes[findIndex(currentScene)].sceneDescription; //And the body text
-        statusText.text = "Day: " + day + "\n Coins: " + money;
+        statusText.text = "Day: " + day + "\nCoins: " + money;
         renderChoices();
 
         //Print Inventory

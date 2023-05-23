@@ -1,0 +1,59 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62cc63572bed93644bb5582fd7c48b1b, type: 3}
+  m_Name: Market_Blacksmith
+  m_EditorClassIdentifier: 
+  sceneTag: Blacksmith
+  sceneTitle: The Blacksmith
+  sceneDescription: "You decide to go to the Blacksmith. \nA strong looking Bagbean
+    greets you. \u201CHello Roll, how may I help you today?\u201D "
+  sceneChoices:
+  - choiceText: Battle Equipment (5 gold)
+    destination: Blacksmith
+    tool: None
+    lockoutTool: Battle Equipment
+    advancesDay: 0
+    coinCost: 5
+    choiceReward: Battle Equipment
+    secretReward: None
+  - choiceText: Axe (3 gold)
+    destination: Blacksmith
+    tool: None
+    lockoutTool: Axe
+    advancesDay: 0
+    coinCost: 3
+    choiceReward: Axe
+    secretReward: None
+  - choiceText: Pickaxe (3 gold)
+    destination: Blacksmith
+    tool: None
+    lockoutTool: Pickaxe
+    advancesDay: 0
+    coinCost: 3
+    choiceReward: Pickaxe
+    secretReward: None
+  - choiceText: Look Around The Shop
+    destination: Look
+    tool: None
+    lockoutTool: None
+    advancesDay: 0
+    coinCost: 0
+    choiceReward: None
+    secretReward: None
+  - choiceText: Go To Another Store
+    destination: Market
+    tool: None
+    lockoutTool: None
+    advancesDay: 0
+    coinCost: 0
+    choiceReward: None
+    secretReward: None
