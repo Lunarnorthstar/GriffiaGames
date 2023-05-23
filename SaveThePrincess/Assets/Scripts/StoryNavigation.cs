@@ -188,7 +188,7 @@ public class StoryNavigation : MonoBehaviour
             if (chosen.destination == "RESET") //If the button ends the story...
             {
                 money = startingCoins; //Reset to the starting coins
-                day = 0; //Reset the day count.
+                day = 1; //Reset the day count.
                 for (int i = 0; i < inventory.Count; i++) //Remove all resettable items
                 {
                     if (inventory[i].resets)

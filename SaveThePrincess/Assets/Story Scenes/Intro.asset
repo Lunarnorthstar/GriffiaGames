@@ -21,6 +21,7 @@ MonoBehaviour:
     for an experience adventurer like you. \nIn any case, you really should hurry
     up and save her, you never know what that evil wizard is doing with her.\nYou
     do not want to be late\u2026\r\n\r\n"
+  backgroundImage: {fileID: 21300000, guid: 40ba62d9075e85241b922aa1b72834ce, type: 3}
   sceneChoices:
   - choiceText: Start
     destination: Market
@@ -28,5 +29,4 @@ MonoBehaviour:
     lockoutTool: None
     advancesDay: 0
     coinCost: 0
-    choiceReward: None
-    secretReward: None
+    rewards: []

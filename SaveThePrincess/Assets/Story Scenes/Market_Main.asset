@@ -19,6 +19,7 @@ MonoBehaviour:
     supplies and tools for your adventure, which shop do you want to go to first?
 
 '
+  backgroundImage: {fileID: 21300000, guid: 40ba62d9075e85241b922aa1b72834ce, type: 3}
   sceneChoices:
   - choiceText: Blacksmith
     destination: Blacksmith
@@ -26,45 +27,39 @@ MonoBehaviour:
     lockoutTool: Stolen
     advancesDay: 0
     coinCost: 0
-    choiceReward: None
-    secretReward: None
+    rewards: []
   - choiceText: General Store
     destination: General Store
     tool: None
     lockoutTool: None
     advancesDay: 0
     coinCost: 0
-    choiceReward: None
-    secretReward: None
+    rewards: []
   - choiceText: Remedy Shop
     destination: Remedy Shop
     tool: None
     lockoutTool: None
     advancesDay: 0
     coinCost: 0
-    choiceReward: None
-    secretReward: None
+    rewards: []
   - choiceText: The Library
     destination: 
     tool: None
     lockoutTool: None
     advancesDay: 0
     coinCost: 0
-    choiceReward: None
-    secretReward: None
+    rewards: []
   - choiceText: To The Forest [1 day]
     destination: 
     tool: None
     lockoutTool: None
     advancesDay: 0
     coinCost: 0
-    choiceReward: None
-    secretReward: None
+    rewards: []
   - choiceText: Talk To The Mysterious Griffolk
     destination: 
     tool: TEST
     lockoutTool: None
     advancesDay: 0
     coinCost: 0
-    choiceReward: None
-    secretReward: None
+    rewards: []

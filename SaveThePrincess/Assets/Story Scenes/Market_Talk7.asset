@@ -31,6 +31,7 @@ MonoBehaviour:
     griffolk that stand in your way. You feel another sting, and another one\u2026you
     don\u2019t feel your legs and you fall to the ground\u2026broken, dead. \nTHE
     END"
+  backgroundImage: {fileID: 0}
   sceneChoices:
   - choiceText: Restart
     destination: Start
@@ -38,29 +39,25 @@ MonoBehaviour:
     lockoutTool: None
     advancesDay: 0
     coinCost: 0
-    choiceReward: None
-    secretReward: None
+    rewards: []
   - choiceText: Restart
     destination: Start
     tool: None
     lockoutTool: None
     advancesDay: 0
     coinCost: 0
-    choiceReward: None
-    secretReward: None
+    rewards: []
   - choiceText: Restart
     destination: Start
     tool: None
     lockoutTool: None
     advancesDay: 0
     coinCost: 0
-    choiceReward: None
-    secretReward: None
+    rewards: []
   - choiceText: Restart
-    destination: Start
+    destination: RESET
     tool: None
     lockoutTool: None
     advancesDay: 0
     coinCost: 0
-    choiceReward: None
-    secretReward: None
+    rewards: []
