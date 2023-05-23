@@ -17,19 +17,17 @@ MonoBehaviour:
   sceneDescription: You eat Breakfast. Why are you doing this again?
   backgroundImage: {fileID: 0}
   sceneChoices:
-  - choiceText: Go Outiside
+  - choiceText: Go Outside
     destination: Outside
-    tool: None
-    lockoutTool: None
+    tools: []
+    lockoutTools: []
     advancesDay: 0
     coinCost: 0
-    choiceReward: None
-    secretReward: None
+    rewards: []
   - choiceText: Go Back to Bed
     destination: Start
-    tool: None
-    lockoutTool: None
+    tools: []
+    lockoutTools: []
     advancesDay: 1
     coinCost: 0
-    choiceReward: None
-    secretReward: None
+    rewards: []

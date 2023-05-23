@@ -141,31 +141,37 @@ public class StoryNavigation : MonoBehaviour
 
     public bool IsChoiceValid(StoryScene.choice choice) //This determines whether a given choice is selectable or not.
     {
-        if (choice.tool != "None")
+        if (choice.tools.Length > 0)
         {
-            bool hasTool = false;
-            foreach (var item in inventory) //For each item in the inventory...
+            foreach (string requirement in choice.tools)
             {
-                if (item.name == choice.tool) //If it's the tool you need to choose the option...
+                bool hasTool = false;
+                foreach (var item in inventory) //For each item in the inventory...
                 {
-                    hasTool = true; //Mark that you have the tool.
+                    if (item.name == requirement) //If it's the tool you need to choose the option...
+                    {
+                        hasTool = true; //Mark that you have the tool.
+                    }
                 }
-            }
 
-            if (hasTool == false) //If you didn't have the tool...
-            {
-                return false; //Then return false.
+                if (hasTool == false) //If you didn't have the tool...
+                {
+                    return false; //Then return false.
+                }
             }
         }
         
         
-        if (choice.lockoutTool != "None") //If there's a tool that prevents you from picking the option...
+        if (choice.lockoutTools.Length > 0) //If there's a tool that prevents you from picking the option...
         {
-            foreach (var item in inventory) //For each item in the inventory...
+            foreach (var requirement in choice.lockoutTools)
             {
-                if (item.name == choice.lockoutTool) //If it's the tool that locks the option...
+                foreach (var item in inventory) //For each item in the inventory...
                 {
-                    return false; //Then return false.
+                    if (item.name == requirement) //If it's the tool that locks the option...
+                    {
+                        return false; //Then return false.
+                    }
                 }
             }
         }

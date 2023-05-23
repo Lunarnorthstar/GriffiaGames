@@ -19,22 +19,26 @@ MonoBehaviour:
   sceneChoices:
   - choiceText: Break the Cycle
     destination: End
-    tool: Meta
-    lockoutTool: None
+    tools:
+    - Meta
+    - Taxes
+    lockoutTools: []
     advancesDay: 0
     coinCost: 0
     rewards: []
   - choiceText: Eat Breakfast (10g)
     destination: Breakfast
-    tool: None
-    lockoutTool: Meta
+    tools: []
+    lockoutTools:
+    - Meta
+    - Taxes
     advancesDay: 0
     coinCost: 10
     rewards: []
   - choiceText: Go Outside
     destination: Outside
-    tool: None
-    lockoutTool: Meta
+    tools: []
+    lockoutTools: []
     advancesDay: 0
     coinCost: 0
     rewards: []

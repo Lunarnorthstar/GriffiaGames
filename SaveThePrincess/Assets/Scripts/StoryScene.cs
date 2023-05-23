@@ -38,9 +38,9 @@ public class StoryScene : ScriptableObject
         [Tooltip("The tag of the scene the topmost button will take you to")]
         public string destination;
         [Tooltip("The tag of the item required for this button")]
-        public string tool;
+        public string[] tools;
         [Tooltip("The tag of the item that will prevent you from using the button")]
-        public string lockoutTool;
+        public string[] lockoutTools;
         [Tooltip("Whether the choice advances the day counter")]
         public bool advancesDay;
 
