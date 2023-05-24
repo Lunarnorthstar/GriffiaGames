@@ -17,29 +17,28 @@ MonoBehaviour:
   sceneDescription: "Oh, so you are curious what happens next? Well I mean, the princess
     is 100% DEAD, that is for sure, but that is not important to you right? Now you
     have a family to take care of. The other day I saw you talking to another Griffolk
-    about getting a love voucher, Casandra have been hinting about wanting to have
+    about getting a love voucher, Casandra has been hinting about wanting to have
     a kid. Sure the kingdom was in chaos for a while, there was some assassination,
     the royals were fighting for the throne, and all that jazz, but you are a simple
-    Bavom running a general store, with your parent Casandra, a common Foolee with
+    Bavom running a general store, with your partner Casandra, a common Foolee with
     nothing remarkable in her life. Yeah, you are a normal and simple citizen that
     pay your taxes and do what you need to do, nothing more, and nothing less. And
     I mean, THIS is basically a big adventure don\u2019t you think? You got to date
-    a cute little Foolee, then you both became partner, you started a family. That
-    is the adventure of life\u2026\noh I see so you are not satisfied? "
+    a cute little Foolee, then you became partners, you started a family. That is
+    the adventure of life\u2026\n...oh I see, so you are not satisfied? "
+  backgroundImage: {fileID: 0}
   sceneChoices:
   - choiceText: Restart
-    destination: Start
-    tool: None
-    lockoutTool: None
+    destination: RESET
+    tools: []
+    lockoutTools: []
     advancesDay: 0
     coinCost: 0
-    choiceReward: None
-    secretReward: None
+    rewards: []
   - choiceText: No I'm Not
     destination: Talk6
-    tool: None
-    lockoutTool: None
+    tools: []
+    lockoutTools: []
     advancesDay: 0
     coinCost: 0
-    choiceReward: None
-    secretReward: None
+    rewards: []

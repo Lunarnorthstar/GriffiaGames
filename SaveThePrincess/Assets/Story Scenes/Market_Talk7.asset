@@ -34,30 +34,30 @@ MonoBehaviour:
   backgroundImage: {fileID: 0}
   sceneChoices:
   - choiceText: Restart
-    destination: Start
-    tool: None
-    lockoutTool: None
-    advancesDay: 0
-    coinCost: 0
-    rewards: []
-  - choiceText: Restart
-    destination: Start
-    tool: None
-    lockoutTool: None
-    advancesDay: 0
-    coinCost: 0
-    rewards: []
-  - choiceText: Restart
-    destination: Start
-    tool: None
-    lockoutTool: None
+    destination: RESET
+    tools: []
+    lockoutTools: []
     advancesDay: 0
     coinCost: 0
     rewards: []
   - choiceText: Restart
     destination: RESET
-    tool: None
-    lockoutTool: None
+    tools: []
+    lockoutTools: []
+    advancesDay: 0
+    coinCost: 0
+    rewards: []
+  - choiceText: Restart
+    destination: RESET
+    tools: []
+    lockoutTools: []
+    advancesDay: 0
+    coinCost: 0
+    rewards: []
+  - choiceText: Restart
+    destination: RESET
+    tools: []
+    lockoutTools: []
     advancesDay: 0
     coinCost: 0
     rewards: []

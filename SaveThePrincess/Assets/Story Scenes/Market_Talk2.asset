@@ -15,23 +15,22 @@ MonoBehaviour:
   sceneTag: Talk2
   sceneTitle: Still Chatting
   sceneDescription: "You tell her that you are on your way to save the Perfaunt Princess!
-    \n\u201COh! Wow really! That is a big task Roll, nice\u2026\u201D \nShe get closer
+    \n\u201COh! Wow really? That is a big task Roll, nice\u2026\u201D \nShe get closer
     to you. \n\u201CThat is really sad, who would want to hurt such a girl, poor
-    king, he must be worry\u2026\u201D"
+    king, he must be so worried\u2026\u201D"
+  backgroundImage: {fileID: 0}
   sceneChoices:
   - choiceText: Stop Talking and Shop
     destination: General Store
-    tool: None
-    lockoutTool: None
+    tools: []
+    lockoutTools: []
     advancesDay: 0
     coinCost: 0
-    choiceReward: None
-    secretReward: Talked
+    rewards: []
   - choiceText: Boast That It Will Be Easy
     destination: Talk3
-    tool: None
-    lockoutTool: None
+    tools: []
+    lockoutTools: []
     advancesDay: 0
     coinCost: 0
-    choiceReward: None
-    secretReward: None
+    rewards: []

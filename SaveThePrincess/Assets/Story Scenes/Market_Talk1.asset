@@ -16,20 +16,22 @@ MonoBehaviour:
   sceneTitle: Chatting
   sceneDescription: "You say sorry to the Foolee and tell her that you have been
     busy lately. \n\u201COh really? Well, what have you been busy with, mmm?\u201D"
+  backgroundImage: {fileID: 0}
   sceneChoices:
   - choiceText: Stop Talking and Shop
     destination: General Store
-    tool: None
-    lockoutTool: None
+    tools: []
+    lockoutTools: []
     advancesDay: 0
     coinCost: 0
-    choiceReward: None
-    secretReward: Talked
+    rewards: []
   - choiceText: Tell Her What You've Doing
     destination: Talk2
-    tool: None
-    lockoutTool: None
+    tools: []
+    lockoutTools: []
     advancesDay: 0
     coinCost: 0
-    choiceReward: None
-    secretReward: None
+    rewards:
+    - name: Talked
+      resets: 1
+      isSecret: 1

@@ -17,16 +17,16 @@ MonoBehaviour:
   sceneDescription: "You are a Bavom knight called \u201CRoll\u201D, and you are
     on a very important mission; to save the Perfaunt Princess! An evil wizard has
     kidnapped her! \nThanks to some scouts, the King has been able to identify the
-    location where she is kept. It is a long way, but it should not be that hard
-    for an experience adventurer like you. \nIn any case, you really should hurry
-    up and save her, you never know what that evil wizard is doing with her.\nYou
-    do not want to be late\u2026\r\n\r\n"
+    location where she is kept. It is a long way, but it should not be hard for an
+    experience adventurer like you. \nIn any case, you really should hurry up and
+    save her, you never know what that evil wizard is doing with her.\nYou do not
+    want to be late\u2026\r\n\r\n"
   backgroundImage: {fileID: 21300000, guid: 40ba62d9075e85241b922aa1b72834ce, type: 3}
   sceneChoices:
   - choiceText: Start
     destination: Market
-    tool: None
-    lockoutTool: None
+    tools: []
+    lockoutTools: []
     advancesDay: 0
     coinCost: 0
     rewards: []

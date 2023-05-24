@@ -15,41 +15,50 @@ MonoBehaviour:
   sceneTag: Blacksmith
   sceneTitle: The Blacksmith
   sceneDescription: "You decide to go to the Blacksmith. \nA strong looking Bagbean
-    greets you. \u201CHello Roll, how may I help you today?\u201D "
-  backgroundImage: {fileID: 21300000, guid: cef7968b3802284479473d80c41bafb8, type: 3}
+    greets you. \n\u201CHello Roll, how may I help you today?\u201D "
+  backgroundImage: {fileID: 0}
   sceneChoices:
   - choiceText: Battle Equipment (5 gold)
     destination: Blacksmith
-    tool: None
-    lockoutTool: Battle Equipment
+    tools: []
+    lockoutTools: []
     advancesDay: 0
     coinCost: 5
-    rewards: []
+    rewards:
+    - name: Battle Equipment
+      resets: 1
+      isSecret: 0
   - choiceText: Axe (3 gold)
     destination: Blacksmith
-    tool: None
-    lockoutTool: Axe
+    tools: []
+    lockoutTools: []
     advancesDay: 0
     coinCost: 3
-    rewards: []
+    rewards:
+    - name: Axe
+      resets: 1
+      isSecret: 0
   - choiceText: Pickaxe (3 gold)
     destination: Blacksmith
-    tool: None
-    lockoutTool: Pickaxe
+    tools: []
+    lockoutTools: []
     advancesDay: 0
     coinCost: 3
-    rewards: []
+    rewards:
+    - name: Pickaxe
+      resets: 1
+      isSecret: 0
   - choiceText: Look Around The Shop
     destination: Look
-    tool: None
-    lockoutTool: None
+    tools: []
+    lockoutTools: []
     advancesDay: 0
     coinCost: 0
     rewards: []
   - choiceText: Go To Another Store
     destination: Market
-    tool: None
-    lockoutTool: None
+    tools: []
+    lockoutTools: []
     advancesDay: 0
     coinCost: 0
     rewards: []

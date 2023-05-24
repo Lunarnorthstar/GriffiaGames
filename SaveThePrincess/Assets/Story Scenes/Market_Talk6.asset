@@ -14,32 +14,31 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sceneTag: Talk6
   sceneTitle: '"Adventure"'
-  sceneDescription: "Oh ok, what about this, last week you need it to deal with the
-    insane increase on Taxes that was stablish by the new monarchy, Casandra is very
-    worry that, your new child will not have the opportunity to get a good education,
-    because now everything is more expensive. You wonder if, not saving the princess
-    was a mistake, maybe if you had save her, the kingdom would had not fallen in
-    to chaos, and things would be better. Then you got to deal with the delay shipping
-    for next month, don\u2019t get me started. They keep delaying your request and
-    you started to suspect that may be, they are lying to you, and all of this is
-    actually a scam. You are unsure how to break the news to Casandra, she has been
-    so stress this couple of days, that you think that the poor Foolee will not be
-    able to take more of it. So is THIS ENOUGH adventure for you? Does this satisfy
-    your desire for Adventure??"
+  sceneDescription: "Oh ok, what about this, last week you needed to deal with the
+    insane increase of taxes that was established by the new monarchy, Casandra is
+    very worried that, your new child will not have the opportunity to get a good
+    education, because now everything is more expensive. You wonder if not saving
+    the princess was a mistake, maybe if you had saved her, the kingdom would had
+    not fallen in to chaos, and things would be better. Then you've got to deal with
+    the delay in shipping for next month, don\u2019t get me started sbut that. They
+    keep delaying your request and you started to suspect that maybe they are lying
+    to you, and all of this is actually a scam. You are unsure how to break the news
+    to Casandra, she has been so stressed these couple of days, you think that the
+    poor Foolee will not be able to take much more of it. \nSo is THIS ENOUGH adventure
+    for you? Does this satisfy your desire for \"Adventure\"??"
+  backgroundImage: {fileID: 0}
   sceneChoices:
   - choiceText: RESTART ALREADY
-    destination: Start
-    tool: None
-    lockoutTool: None
+    destination: RESET
+    tools: []
+    lockoutTools: []
     advancesDay: 0
     coinCost: 0
-    choiceReward: None
-    secretReward: None
+    rewards: []
   - choiceText: No It Doesn't
     destination: Talk7
-    tool: None
-    lockoutTool: None
+    tools: []
+    lockoutTools: []
     advancesDay: 0
     coinCost: 0
-    choiceReward: None
-    secretReward: None
+    rewards: []

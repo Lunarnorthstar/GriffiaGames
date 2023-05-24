@@ -15,33 +15,32 @@ MonoBehaviour:
   sceneTag: Talk4
   sceneTitle: A Happily Ever After
   sceneDescription: "You muster all of your courage and finally ask the Foolee is
-    she is free on that night. She is caught in surprise by your sudden question
-    and gladly accepts. You take the Foolee to a nice little bar in town. The two
-    of you had a great and fun night, with a lot of music, drinking and dancing!
-    You haven\u2019t been this happy for a long time. You wake up in a random stable
-    with the Foolee. She wakes up, and yawns cutely, as she wakes up, she immediately
-    grabs you by your arm and pull you to her, whispering at your ear. \n\u201CGood
-    morning\u2026\u201D \nFor the next two weeks, you decide to start going out with
-    her, you also now know her name, Casandra. After many dates and fun times, you
-    finally decide to ask her for her hand in marriage, and both of you partake in
-    the Soul Bonding trial. You decide to put down your sword and help Casandra with
-    her little shop. The two of you enjoy each others company. You have never been
-    this happy before, and finally, I think we can say that, both of you live happily
-    ever after. \nThe End."
+    she is free that night. She is caught by surprise at your sudden question and
+    gladly accepts. You take the Foolee to a nice little bar in town. The two of
+    you have a great  night with a lot of music, drinking, and dancing! You haven\u2019t
+    been this happy for a long time. You wake up in a random stable with the Foolee.
+    She wakes up and yawns cutely, as she wakes, she immediately grabs you by your
+    arm and pulls you to her, whispering in your ear. \n\u201CGood morning\u2026\u201D
+    \nFor the next two weeks, you decide to start going out with her, you also now
+    know her name, Casandra. After many dates and fun times, you finally decide to
+    ask her for her hand in marriage, and both of you partake in the Soul Bonding
+    trial. You decide to put down your sword and help Casandra with her little shop.
+    The two of you enjoy each others company. You have never been this happy before,
+    and finally, I think we can say that, both of you live happily ever after. \nThe
+    End."
+  backgroundImage: {fileID: 0}
   sceneChoices:
   - choiceText: Restart
-    destination: Start
-    tool: None
-    lockoutTool: None
+    destination: RESET
+    tools: []
+    lockoutTools: []
     advancesDay: 0
     coinCost: 0
-    choiceReward: None
-    secretReward: None
+    rewards: []
   - choiceText: Wait What Happens Next?!
     destination: Talk5
-    tool: None
-    lockoutTool: None
+    tools: []
+    lockoutTools: []
     advancesDay: 0
     coinCost: 0
-    choiceReward: None
-    secretReward: None
+    rewards: []

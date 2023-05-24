@@ -14,13 +14,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sceneTag: Steal
   sceneTitle: '"Borrowing"'
-  sceneDescription: "You are in need, so you will \u201Cborrow\u201D the Pickaxe"
+  sceneDescription: "You are in need, so you will \u201Cborrow\u201D the Pickaxe."
+  backgroundImage: {fileID: 0}
   sceneChoices:
   - choiceText: Leave The Shop
     destination: Market
-    tool: None
-    lockoutTool: None
+    tools: []
+    lockoutTools: []
     advancesDay: 0
     coinCost: 0
-    choiceReward: Pickaxe
-    secretReward: Stolen
+    rewards:
+    - name: Pickaxe
+      resets: 1
+      isSecret: 0

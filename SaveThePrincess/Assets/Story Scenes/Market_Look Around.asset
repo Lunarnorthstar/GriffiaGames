@@ -18,20 +18,22 @@ MonoBehaviour:
     continues doing his work. A new customer enter the shop and the Bagbean seem
     to be busy attending the new customer. Suddenly you see a chance to \u201Cborrow\u201D
     something from the shop\u2026"
+  backgroundImage: {fileID: 0}
   sceneChoices:
   - choiceText: Steal The Pickaxe
     destination: Steal
-    tool: None
-    lockoutTool: None
+    tools: []
+    lockoutTools: []
     advancesDay: 0
     coinCost: 0
-    choiceReward: None
-    secretReward: None
+    rewards:
+    - name: Stolen
+      resets: 1
+      isSecret: 1
   - choiceText: No, Stealing Is Bad
     destination: Blacksmith
-    tool: None
-    lockoutTool: None
+    tools: []
+    lockoutTools: []
     advancesDay: 0
     coinCost: 0
-    choiceReward: None
-    secretReward: None
+    rewards: []

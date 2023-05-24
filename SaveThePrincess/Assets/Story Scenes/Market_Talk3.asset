@@ -14,25 +14,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sceneTag: Talk3
   sceneTitle: Ok, This Is A Lot Of Chatting
-  sceneDescription: "The Foolee giggle and smile at you. \n\u201CPfff of course it
-    is easy, I mean for someone like you\u2026\u201D \nThe Foolee now is extremely
-    close to you, she give you a soft, yet playful punch on your arm. You face her
+  sceneDescription: "The Foolee giggles and smiles at you. \n\u201CPfff of course
+    it is easy, I mean for someone like you\u2026\u201D \nThe Foolee now is extremely
+    close to you, she gives you a soft, yet playful punch on the arm. You face her
     and notice her beautiful eyes, they gleam with a radian light. You scratch your
     head in embarrassment. "
+  backgroundImage: {fileID: 0}
   sceneChoices:
   - choiceText: Ask Her Out
     destination: Talk4
-    tool: None
-    lockoutTool: None
+    tools: []
+    lockoutTools: []
     advancesDay: 0
     coinCost: 0
-    choiceReward: None
-    secretReward: None
+    rewards: []
   - choiceText: Stop Talking AND SHOP
     destination: General Store
-    tool: None
-    lockoutTool: None
+    tools: []
+    lockoutTools: []
     advancesDay: 0
     coinCost: 0
-    choiceReward: None
-    secretReward: Talked
+    rewards: []

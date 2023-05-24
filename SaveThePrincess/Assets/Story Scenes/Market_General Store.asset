@@ -15,46 +15,52 @@ MonoBehaviour:
   sceneTag: General Store
   sceneTitle: The General Store
   sceneDescription: "You decide to go to the General Store. \nA beautiful and cheerful
-    Foolee greets you. \u201COh hello there Roll! Good to see you again, you haven\u2019t
+    Foolee greets you. \n\u201COh hello there Roll! Good to see you again, you haven\u2019t
     visited me for a while!\u201D "
+  backgroundImage: {fileID: 0}
   sceneChoices:
   - choiceText: Say You Are Sorry You Don't Visit More Often
     destination: Talk1
-    tool: None
-    lockoutTool: Talked
+    tools: []
+    lockoutTools:
+    - Talked
     advancesDay: 0
     coinCost: 0
-    choiceReward: None
-    secretReward: None
+    rewards: []
   - choiceText: Buy Some Rope (2 gold)
     destination: General Store
-    tool: None
-    lockoutTool: None
+    tools: []
+    lockoutTools: []
     advancesDay: 0
     coinCost: 2
-    choiceReward: Rope
-    secretReward: None
+    rewards:
+    - name: Rope
+      resets: 1
+      isSecret: 0
   - choiceText: Buy A Shovel (5 gold)
     destination: General Store
-    tool: None
-    lockoutTool: None
+    tools: []
+    lockoutTools: []
     advancesDay: 0
     coinCost: 5
-    choiceReward: Shovel
-    secretReward: None
+    rewards:
+    - name: Shovel
+      resets: 1
+      isSecret: 0
   - choiceText: Buy Some Rations (3 gold)
     destination: General Store
-    tool: None
-    lockoutTool: None
+    tools: []
+    lockoutTools: []
     advancesDay: 0
     coinCost: 3
-    choiceReward: 1 Day Of Rations
-    secretReward: None
+    rewards:
+    - name: Rations
+      resets: 1
+      isSecret: 0
   - choiceText: Go To Another Store
     destination: Market
-    tool: None
-    lockoutTool: None
+    tools: []
+    lockoutTools: []
     advancesDay: 0
     coinCost: 0
-    choiceReward: None
-    secretReward: None
+    rewards: []
