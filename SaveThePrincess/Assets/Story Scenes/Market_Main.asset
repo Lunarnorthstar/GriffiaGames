@@ -20,7 +20,15 @@ MonoBehaviour:
 
 '
   backgroundImage: {fileID: 21300000, guid: 40ba62d9075e85241b922aa1b72834ce, type: 3}
+  usesMasterButton: 0
   sceneChoices:
+  - choiceText: To The Forest [1 day]
+    destination: 
+    tools: []
+    lockoutTools: []
+    advancesDay: 0
+    coinCost: 0
+    rewards: []
   - choiceText: The Blacksmith
     destination: Blacksmith
     tools: []
@@ -44,23 +52,18 @@ MonoBehaviour:
     coinCost: 0
     rewards: []
   - choiceText: The Library
-    destination: 
-    tools: []
-    lockoutTools: []
-    advancesDay: 0
-    coinCost: 0
-    rewards: []
-  - choiceText: To The Forest [1 day]
-    destination: 
+    destination: Library
     tools: []
     lockoutTools: []
     advancesDay: 0
     coinCost: 0
     rewards: []
   - choiceText: Talk To The Mysterious Griffolk
-    destination: 
-    tools: []
-    lockoutTools: []
+    destination: Mysterious Griffolk
+    tools:
+    - Bug Curse
+    lockoutTools:
+    - Strange Dagger
     advancesDay: 0
     coinCost: 0
     rewards: []

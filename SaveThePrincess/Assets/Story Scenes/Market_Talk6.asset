@@ -27,6 +27,7 @@ MonoBehaviour:
     poor Foolee will not be able to take much more of it. \nSo is THIS ENOUGH adventure
     for you? Does this satisfy your desire for \"Adventure\"??"
   backgroundImage: {fileID: 0}
+  usesMasterButton: 1
   sceneChoices:
   - choiceText: RESTART ALREADY
     destination: RESET

@@ -21,12 +21,15 @@ public class StoryScene : ScriptableObject
 
     [Tooltip("The scene background if it changes the background")]
     public Sprite backgroundImage;
+
+    [Tooltip("Whether the scene uses the top, centered, button.")]
+    public bool usesMasterButton;
     
     [System.Serializable]
     public struct Item
     {
         public string name;
-        public bool resets;
+        public bool persists;
         public bool isSecret;
     }
     

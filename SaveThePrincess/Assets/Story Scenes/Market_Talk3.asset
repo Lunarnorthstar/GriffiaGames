@@ -17,19 +17,20 @@ MonoBehaviour:
   sceneDescription: "The Foolee giggles and smiles at you. \n\u201CPfff of course
     it is easy, I mean for someone like you\u2026\u201D \nThe Foolee now is extremely
     close to you, she gives you a soft, yet playful punch on the arm. You face her
-    and notice her beautiful eyes, they gleam with a radian light. You scratch your
+    and notice her beautiful eyes, they gleam with a radiant light. You scratch your
     head in embarrassment. "
   backgroundImage: {fileID: 0}
+  usesMasterButton: 0
   sceneChoices:
-  - choiceText: Ask Her Out
-    destination: Talk4
+  - choiceText: Stop Talking AND SHOP
+    destination: General Store
     tools: []
     lockoutTools: []
     advancesDay: 0
     coinCost: 0
     rewards: []
-  - choiceText: Stop Talking AND SHOP
-    destination: General Store
+  - choiceText: Ask Her Out
+    destination: Talk4
     tools: []
     lockoutTools: []
     advancesDay: 0

@@ -29,6 +29,7 @@ MonoBehaviour:
     and finally, I think we can say that, both of you live happily ever after. \nThe
     End."
   backgroundImage: {fileID: 0}
+  usesMasterButton: 1
   sceneChoices:
   - choiceText: Restart
     destination: RESET

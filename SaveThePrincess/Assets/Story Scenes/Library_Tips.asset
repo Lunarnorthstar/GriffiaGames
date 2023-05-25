@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62cc63572bed93644bb5582fd7c48b1b, type: 3}
+  m_Name: Library_Tips
+  m_EditorClassIdentifier: 
+  sceneTag: Tips
+  sceneTitle: Tips
+  sceneDescription: "-Some actions will only be available if the player meets certain
+    requirements or triggers some events\n\n-If something is in BLOCK CAPITALS\u2026it
+    is probably something important or something that would be good to research in
+    the library\n\n-Remember, it is really hard to die in this game, BUT there are
+    a few times where the player can truly die\u2026so don\u2019t be afraid to experiment
+    around in each play through!\n\n-There is something called a \u201CPerk\u201D.
+    They are obtained after the player manages to do something special. There are
+    three in total. Ones a perk is obtained, the player will keep it for every future
+    playthrough."
+  backgroundImage: {fileID: 0}
+  usesMasterButton: 1
+  sceneChoices:
+  - choiceText: Ok
+    destination: Library
+    tools: []
+    lockoutTools: []
+    advancesDay: 0
+    coinCost: 0
+    rewards: []

@@ -27,6 +27,7 @@ MonoBehaviour:
     a cute little Foolee, then you became partners, you started a family. That is
     the adventure of life\u2026\n...oh I see, so you are not satisfied? "
   backgroundImage: {fileID: 0}
+  usesMasterButton: 1
   sceneChoices:
   - choiceText: Restart
     destination: RESET

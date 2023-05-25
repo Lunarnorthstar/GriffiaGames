@@ -16,6 +16,7 @@ MonoBehaviour:
   sceneTitle: '"Borrowing"'
   sceneDescription: "You are in need, so you will \u201Cborrow\u201D the Pickaxe."
   backgroundImage: {fileID: 0}
+  usesMasterButton: 1
   sceneChoices:
   - choiceText: Leave The Shop
     destination: Market
@@ -25,5 +26,5 @@ MonoBehaviour:
     coinCost: 0
     rewards:
     - name: Pickaxe
-      resets: 1
+      persists: 0
       isSecret: 0

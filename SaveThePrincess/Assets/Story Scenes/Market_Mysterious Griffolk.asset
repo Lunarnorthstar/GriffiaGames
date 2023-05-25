@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62cc63572bed93644bb5582fd7c48b1b, type: 3}
+  m_Name: Market_Mysterious Griffolk
+  m_EditorClassIdentifier: 
+  sceneTag: A Mysterious Griffolk
+  sceneTitle: Mysterious Griffolk
+  sceneDescription: "You notice a hooded griffolk sitting in the corner of the market
+    place. As you approach them, they stand up a meet you half way. \n\u201CHey there,
+    I can see it, you killed the red tree demon bugs, right? Yeah I can see the curse
+    in your body, well done; you are one-step closer to opening the Red Door. Here
+    you will need this\u2026\u201D \nThe mysterious griffolk hands you a strange
+    looking dagger. Before you are able to protest, the griffolk is gone. You have
+    a bad feeling about this\u2026"
+  backgroundImage: {fileID: 0}
+  usesMasterButton: 1
+  sceneChoices:
+  - choiceText: Continue With Your Adventure
+    destination: Market
+    tools: []
+    lockoutTools: []
+    advancesDay: 0
+    coinCost: 0
+    rewards:
+    - name: Strange Dagger
+      persists: 0
+      isSecret: 0

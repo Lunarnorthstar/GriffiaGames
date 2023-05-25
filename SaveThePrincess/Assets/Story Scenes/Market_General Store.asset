@@ -18,12 +18,12 @@ MonoBehaviour:
     Foolee greets you. \n\u201COh hello there Roll! Good to see you again, you haven\u2019t
     visited me for a while!\u201D "
   backgroundImage: {fileID: 0}
+  usesMasterButton: 1
   sceneChoices:
-  - choiceText: Say You Are Sorry You Don't Visit More Often
-    destination: Talk1
+  - choiceText: Go To Another Store
+    destination: Market
     tools: []
-    lockoutTools:
-    - Talked
+    lockoutTools: []
     advancesDay: 0
     coinCost: 0
     rewards: []
@@ -35,7 +35,7 @@ MonoBehaviour:
     coinCost: 2
     rewards:
     - name: Rope
-      resets: 1
+      persists: 0
       isSecret: 0
   - choiceText: Buy A Shovel (5 gold)
     destination: General Store
@@ -45,7 +45,7 @@ MonoBehaviour:
     coinCost: 5
     rewards:
     - name: Shovel
-      resets: 1
+      persists: 0
       isSecret: 0
   - choiceText: Buy Some Rations (3 gold)
     destination: General Store
@@ -55,12 +55,13 @@ MonoBehaviour:
     coinCost: 3
     rewards:
     - name: Rations
-      resets: 1
+      persists: 0
       isSecret: 0
-  - choiceText: Go To Another Store
-    destination: Market
+  - choiceText: Say You Are Sorry You Don't Visit More Often
+    destination: Talk1
     tools: []
-    lockoutTools: []
+    lockoutTools:
+    - Talked
     advancesDay: 0
     coinCost: 0
     rewards: []

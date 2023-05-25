@@ -17,7 +17,15 @@ MonoBehaviour:
   sceneDescription: "You decide to go to the Remedy Shop. \nA tall Splicer greets
     you. \u201COh hello Roll, long time no see. How may I help you today?\u201D"
   backgroundImage: {fileID: 0}
+  usesMasterButton: 1
   sceneChoices:
+  - choiceText: Go To Another Store
+    destination: Market
+    tools: []
+    lockoutTools: []
+    advancesDay: 0
+    coinCost: 0
+    rewards: []
   - choiceText: Buy Some Medicine (3 gold)
     destination: Remedy Shop
     tools: []
@@ -26,7 +34,7 @@ MonoBehaviour:
     coinCost: 3
     rewards:
     - name: General Medicine
-      resets: 1
+      persists: 0
       isSecret: 0
   - choiceText: Buy Some Bandages (2 gold)
     destination: Remedy Shop
@@ -36,7 +44,7 @@ MonoBehaviour:
     coinCost: 2
     rewards:
     - name: Bandages
-      resets: 1
+      persists: 0
       isSecret: 0
   - choiceText: Buy Some Soft Tea (1 gold)
     destination: Remedy Shop
@@ -46,12 +54,5 @@ MonoBehaviour:
     coinCost: 1
     rewards:
     - name: Soft Tea
-      resets: 1
+      persists: 0
       isSecret: 0
-  - choiceText: Go To Another Store
-    destination: Market
-    tools: []
-    lockoutTools: []
-    advancesDay: 0
-    coinCost: 0
-    rewards: []

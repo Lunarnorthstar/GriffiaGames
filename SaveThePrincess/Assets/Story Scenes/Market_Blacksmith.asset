@@ -17,7 +17,15 @@ MonoBehaviour:
   sceneDescription: "You decide to go to the Blacksmith. \nA strong looking Bagbean
     greets you. \n\u201CHello Roll, how may I help you today?\u201D "
   backgroundImage: {fileID: 0}
+  usesMasterButton: 1
   sceneChoices:
+  - choiceText: Go To Another Store
+    destination: Market
+    tools: []
+    lockoutTools: []
+    advancesDay: 0
+    coinCost: 0
+    rewards: []
   - choiceText: Battle Equipment (5 gold)
     destination: Blacksmith
     tools: []
@@ -26,7 +34,7 @@ MonoBehaviour:
     coinCost: 5
     rewards:
     - name: Battle Equipment
-      resets: 1
+      persists: 0
       isSecret: 0
   - choiceText: Axe (3 gold)
     destination: Blacksmith
@@ -36,7 +44,7 @@ MonoBehaviour:
     coinCost: 3
     rewards:
     - name: Axe
-      resets: 1
+      persists: 0
       isSecret: 0
   - choiceText: Pickaxe (3 gold)
     destination: Blacksmith
@@ -46,17 +54,10 @@ MonoBehaviour:
     coinCost: 3
     rewards:
     - name: Pickaxe
-      resets: 1
+      persists: 0
       isSecret: 0
   - choiceText: Look Around The Shop
     destination: Look
-    tools: []
-    lockoutTools: []
-    advancesDay: 0
-    coinCost: 0
-    rewards: []
-  - choiceText: Go To Another Store
-    destination: Market
     tools: []
     lockoutTools: []
     advancesDay: 0

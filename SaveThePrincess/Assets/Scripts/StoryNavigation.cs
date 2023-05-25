@@ -13,6 +13,8 @@ public class StoryNavigation : MonoBehaviour
     private TextMeshProUGUI bodyText;
     public GameObject statusUI;
     private TextMeshProUGUI statusText;
+    public GameObject coinUI;
+    private TextMeshProUGUI coinText;
     public GameObject background;
 
     public GameObject[] buttons;
@@ -42,6 +44,7 @@ public class StoryNavigation : MonoBehaviour
         titleText = TitleUI.GetComponent<TextMeshProUGUI>();
         bodyText = bodyUI.GetComponent<TextMeshProUGUI>(); //Set the title and body text components for easier access.
         statusText = statusUI.GetComponent<TextMeshProUGUI>();
+        coinText = coinUI.GetComponent<TextMeshProUGUI>();
         
         
         buttonText = new TextMeshProUGUI[buttons.Length]; //Initialize the button array
@@ -79,8 +82,8 @@ public class StoryNavigation : MonoBehaviour
         renderChoices();
 
         //Print Inventory
-        printInventory.text = " "; //Reset it so it doesn't just keep repeating
-        printInventory.text += "Coins: " + money + "\n";
+        printInventory.text = ""; //Reset it so it doesn't just keep repeating
+        coinText.text = "Coins: " + money;
         foreach (var item in inventory)
         {
             if (!item.isSecret)
@@ -114,28 +117,65 @@ public class StoryNavigation : MonoBehaviour
         {
             if (Scenes[location].sceneChoices[i].destination != "None") //If the option exists...
             {
-                if (IsChoiceValid(Scenes[location].sceneChoices[i])) //If the choice can be selected...
+                if (Scenes[location].usesMasterButton)
                 {
-                    buttons[i].SetActive(true); //Set the button to active
-                    buttonText[i].text = Scenes[location].sceneChoices[i].choiceText; //Activate the button and set it's text.
-                    buttonText[i].color = Color.black; //Make it black
-                    globalValid[i] = true; //Set the bool to allow the button to be selectable
+                    if (IsChoiceValid(Scenes[location].sceneChoices[i])) //If the choice can be selected...
+                    {
+                        buttons[i].SetActive(true); //Set the button to active
+                        buttonText[i].text = Scenes[location].sceneChoices[i].choiceText; //Activate the button and set it's text.
+                        buttonText[i].color = Color.black; //Make it black
+                        globalValid[i] = true; //Set the bool to allow the button to be selectable
+                    }
+                    else //If the choice is invalid for any reason...
+                    {
+                        buttons[i].SetActive(true);
+                        buttonText[i].text = Scenes[location].sceneChoices[i].choiceText; //Activate the button and set it's text.
+                        buttonText[i].color = Color.gray; //Make it grey
+                        globalValid[i] = false;
+                    }
                 }
-                else //If the choice is invalid for any reason...
+                else
                 {
-                    buttons[i].SetActive(true);
-                    buttonText[i].text = Scenes[location].sceneChoices[i].choiceText; //Activate the button and set it's text.
-                    buttonText[i].color = Color.gray; //Make it grey
-                    globalValid[i] = false;
+                    buttons[0].SetActive(false);
+                    
+                    
+                    if (IsChoiceValid(Scenes[location].sceneChoices[i])) //If the choice can be selected...
+                    {
+                        buttons[i + 1].SetActive(true); //Set the button to active
+                        buttonText[i + 1].text = Scenes[location].sceneChoices[i].choiceText; //Activate the button and set it's text.
+                        buttonText[i + 1].color = Color.black; //Make it black
+                        globalValid[i + 1] = true; //Set the bool to allow the button to be selectable
+                    }
+                    else //If the choice is invalid for any reason...
+                    {
+                        buttons[i + 1].SetActive(true);
+                        buttonText[i +1].text = Scenes[location].sceneChoices[i].choiceText; //Activate the button and set it's text.
+                        buttonText[i + 1].color = Color.gray; //Make it grey
+                        globalValid[i + 1] = false;
+                    }
                 }
             }
         }
 
-        for (int i = Scenes[location].sceneChoices.Length; i < buttons.Length; i++) //Clean up the buttons that aren't being used
+        if (Scenes[location].usesMasterButton)
         {
-            buttons[i].SetActive(false); //By setting them to inactive
-            globalValid[i] = false; //And making them unpressable.
+            for (int i = Scenes[location].sceneChoices.Length; i < buttons.Length; i++) //Clean up the buttons that aren't being used
+            {
+                buttons[i].SetActive(false); //By setting them to inactive
+                globalValid[i] = false; //And making them unpressable.
+            }
         }
+        else
+        {
+            for (int i = Scenes[location].sceneChoices.Length + 1; i < buttons.Length; i++) //Clean up the buttons that aren't being used
+            {
+                buttons[i].SetActive(false); //By setting them to inactive
+                globalValid[i] = false; //And making them unpressable.
+            }
+        }
+        
+        
+        
     }
     
 
@@ -187,7 +227,19 @@ public class StoryNavigation : MonoBehaviour
 
     public void ButtonInput(int input) //This handles the input from the buttons.
     {
-        StoryScene.choice chosen = Scenes[findIndex(currentScene)].sceneChoices[input]; //Convert the input into a quick choice variable.
+        StoryScene.choice chosen;
+        
+        if (Scenes[findIndex(currentScene)].usesMasterButton)
+        {
+            chosen = Scenes[findIndex(currentScene)].sceneChoices[input]; //Convert the input into a quick choice variable.
+        }
+        else
+        {
+            chosen = Scenes[findIndex(currentScene)].sceneChoices[input - 1]; //Convert the input into a quick choice variable.
+        }
+        
+        
+        
         
         if (globalValid[input]) //If it's valid (determined earlier)
         {
@@ -197,9 +249,11 @@ public class StoryNavigation : MonoBehaviour
                 day = 1; //Reset the day count.
                 for (int i = 0; i < inventory.Count; i++) //Remove all resettable items
                 {
-                    if (inventory[i].resets)
+                    if (!inventory[i].persists)
                     {
+                        Debug.Log("Removed " + i + ", " + inventory.Count + " remaining");
                         inventory.Remove(inventory[i]);
+                        i --;
                     }
                 }
 

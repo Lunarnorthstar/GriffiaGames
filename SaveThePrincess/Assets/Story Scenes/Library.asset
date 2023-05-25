@@ -1,0 +1,44 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62cc63572bed93644bb5582fd7c48b1b, type: 3}
+  m_Name: Library
+  m_EditorClassIdentifier: 
+  sceneTag: Library
+  sceneTitle: The Library
+  sceneDescription: "You decide to go to the Library. You are greeted by a long Terradragon,
+    they are coiled around a pile of books. \n\u201CHello there, how can I help you
+    today?\u201D \nI can give you some tips, or if you know what you are looking
+    for, I will be able to find you a book about it. "
+  backgroundImage: {fileID: 0}
+  usesMasterButton: 1
+  sceneChoices:
+  - choiceText: Go To Another Store
+    destination: Market
+    tools: []
+    lockoutTools: []
+    advancesDay: 0
+    coinCost: 0
+    rewards: []
+  - choiceText: Tips
+    destination: Tips
+    tools: []
+    lockoutTools: []
+    advancesDay: 0
+    coinCost: 0
+    rewards: []
+  - choiceText: Search For A Book
+    destination: Books1
+    tools: []
+    lockoutTools: []
+    advancesDay: 0
+    coinCost: 0
+    rewards: []
