@@ -44,6 +44,14 @@ public class StoryScene : ScriptableObject
         public string[] tools;
         [Tooltip("The tag of the item that will prevent you from using the button")]
         public string[] lockoutTools;
+        [Tooltip("The day at which this option will become available")]
+        public int lowerTimeBound;
+        [Tooltip("The day after which this option will become unavailable")]
+        public int upperTimeBound;
+        [Tooltip("Whether the choice is hidden if the requirements are not met")]
+        public bool hideWhenInvalid;
+        
+        
         [Tooltip("Whether the choice advances the day counter")]
         public bool advancesDay;
 

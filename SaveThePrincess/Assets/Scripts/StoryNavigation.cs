@@ -115,7 +115,11 @@ public class StoryNavigation : MonoBehaviour
 
         for (int i = 0; i < Scenes[location].sceneChoices.Length; i++) //For each option...
         {
-            if (Scenes[location].sceneChoices[i].destination != "None") //If the option exists...
+            StoryScene.choice choice = Scenes[location].sceneChoices[i];
+            
+            
+            
+            if (choice.destination != "None") //If the option exists...
             {
                 if (Scenes[location].usesMasterButton)
                 {
@@ -128,7 +132,7 @@ public class StoryNavigation : MonoBehaviour
                     }
                     else //If the choice is invalid for any reason...
                     {
-                        buttons[i].SetActive(true);
+                        buttons[i].SetActive(!Scenes[location].sceneChoices[i].hideWhenInvalid);
                         buttonText[i].text = Scenes[location].sceneChoices[i].choiceText; //Activate the button and set it's text.
                         buttonText[i].color = Color.gray; //Make it grey
                         globalValid[i] = false;
@@ -148,8 +152,8 @@ public class StoryNavigation : MonoBehaviour
                     }
                     else //If the choice is invalid for any reason...
                     {
-                        buttons[i + 1].SetActive(true);
-                        buttonText[i +1].text = Scenes[location].sceneChoices[i].choiceText; //Activate the button and set it's text.
+                        buttons[i + 1].SetActive(!Scenes[location].sceneChoices[i].hideWhenInvalid);
+                        buttonText[i + 1].text = Scenes[location].sceneChoices[i].choiceText; //Activate the button and set it's text.
                         buttonText[i + 1].color = Color.gray; //Make it grey
                         globalValid[i + 1] = false;
                     }
@@ -216,6 +220,17 @@ public class StoryNavigation : MonoBehaviour
             }
         }
 
+
+        if (choice.lowerTimeBound > day) //If the option only becomes available at a day you haven't reached yet...
+        {
+            return false;
+        }
+
+        if (choice.upperTimeBound != 0 && choice.upperTimeBound < day) //If the option becomes unavailable at a day you've passed...
+        {
+            return false;
+        }
+        
         if (money < choice.coinCost) //If you don't have enough money...
         {
             return false; //Then return false.
