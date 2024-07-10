@@ -1,6 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
+using Unity.Mathematics;
+using UnityEditor.SceneManagement;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -30,7 +33,7 @@ public class StoryNavigation : MonoBehaviour
     [Space]
     
     public TextMeshProUGUI printInventory;
-    public List<StoryScene.Item> inventory;
+    public List<StoryScene.InventoryEntry> inventory;
 
 
     [Space] private int day = 1;
@@ -86,9 +89,9 @@ public class StoryNavigation : MonoBehaviour
         coinText.text = "Coins: " + money;
         foreach (var item in inventory)
         {
-            if (!item.isSecret)
+            if (!item.itemData.isSecret)
             {
-                printInventory.text += item.name + "\n";
+                printInventory.text += item.itemData.name + "\n";
             }
         }
     }
@@ -187,14 +190,23 @@ public class StoryNavigation : MonoBehaviour
     {
         if (choice.tools.Length > 0)
         {
-            foreach (string requirement in choice.tools)
+            foreach (var requirement in choice.tools) //For each requirement there is...
             {
-                bool hasTool = false;
+                bool hasTool = false; //Initialize a bool...
+                int total = requirement.amount;
                 foreach (var item in inventory) //For each item in the inventory...
                 {
-                    if (item.name == requirement) //If it's the tool you need to choose the option...
+                    foreach (var trait  in item.itemData.traits) //For each trait an item has...
                     {
-                        hasTool = true; //Mark that you have the tool.
+                        if (trait == requirement.trait) //If it's the tool you need to choose the option...
+                        {
+                            total -= item.itemCount;
+                        }
+
+                        if (total <= 0)
+                        {
+                            hasTool = true; //Mark that you have the tool.
+                        }
                     }
                 }
 
@@ -208,14 +220,23 @@ public class StoryNavigation : MonoBehaviour
         
         if (choice.lockoutTools.Length > 0) //If there's a tool that prevents you from picking the option...
         {
-            foreach (var requirement in choice.lockoutTools)
+            foreach (var requirement in choice.lockoutTools) //For each requirement there is...
             {
+                int bucket = 0;
                 foreach (var item in inventory) //For each item in the inventory...
                 {
-                    if (item.name == requirement) //If it's the tool that locks the option...
+                    foreach (var trait in item.itemData.traits) //For each trait the item has...
                     {
-                        return false; //Then return false.
+                        if (trait == requirement.trait) //If it's the tool that locks the option...
+                        {
+                            bucket += item.itemCount;
+                        }
                     }
+                }
+
+                if (bucket >= requirement.maximum && bucket != 0) //If you have more than the choice allows...
+                {
+                    return false; //Then return false.
                 }
             }
         }
@@ -255,29 +276,81 @@ public class StoryNavigation : MonoBehaviour
         
         
         
-        
         if (globalValid[input]) //If it's valid (determined earlier)
         {
+            //Remove items
+            foreach (var requirement in chosen.tools) //For each requirement there is...
+            {
+                if (requirement.consumesItem)
+                {
+                    int total = requirement.amount;
+                    for(int i = 0; i < inventory.Count; i++) //Compare against all items in your inventory...
+                    {
+                        bool done = false;
+                        
+                        StoryScene.InventoryEntry thisItem = inventory[i];
+                        foreach (var trait in inventory[i].itemData.traits)
+                        {
+                            if (trait == requirement.trait) //When you find the matching trait...
+                            {
+                                
+                                thisItem.itemCount -= total; //Subtract from the count.
+                                Debug.Log(thisItem.itemCount + " Are left");
+                                total = 0;
+                                if (thisItem.itemCount < 0) //If you've subtracted more than you have...
+                                {
+                                    total = math.abs(thisItem.itemCount); //Reset the total to be what the difference was.
+                                    Debug.Log(total + " left to remove");
+                                }
+                                
+                                
+                                inventory.RemoveAt(i); //Remove the item
+                                if (thisItem.itemCount > 0) //If you still have at least one...
+                                { 
+                                    inventory.Add(thisItem); //Add the item back with the new count.
+                                }
+                                else //If it's no longer in your inventory...
+                                {
+                                    i--; //Back up so you don't skip any items
+                                }
+
+                                if (total <= 0) //If there's no more to subtract...
+                                {
+                                    Debug.Log("Oh, that's all?");
+                                    done = true; //Then you're done with this requirement
+                                    break; //So stop checking items.
+                                }
+                                
+                                
+                            }
+                        }
+
+                        if (done) //If you already removed an item...
+                        {
+                            break; //Stop checking for this requirement.
+                        }
+                    }
+                }
+            }
+            
+            //Add items
             if (chosen.destination == "RESET") //If the button ends the story...
             {
                 money = startingCoins; //Reset to the starting coins
                 day = 1; //Reset the day count.
                 for (int i = 0; i < inventory.Count; i++) //Remove all resettable items
                 {
-                    if (!inventory[i].persists)
+                    if (!inventory[i].itemData.persists) //If the item doesn't persist...
                     {
                         Debug.Log("Removed " + i + ", " + inventory.Count + " remaining");
-                        inventory.Remove(inventory[i]);
+                        inventory.Remove(inventory[i]); //Remove it.
                         i --;
                     }
                 }
 
                 if (chosen.rewards.Length > 0) //If the choice has a reward...
                 {
-                    foreach (var item in chosen.rewards)
-                    {
-                        inventory.Add(item); //Add it to your inventory.
-                    }
+                    AddItemToInventory(chosen.rewards.ToList());
                 }
                 
                 currentScene = "Start";
@@ -292,10 +365,7 @@ public class StoryNavigation : MonoBehaviour
 
                 if (chosen.rewards.Length > 0) //If the choice has a reward...
                 {
-                    foreach (var item in chosen.rewards)
-                    {
-                        inventory.Add(item); //Add it to your inventory.
-                    }
+                    AddItemToInventory(chosen.rewards.ToList());
                 }
 
                 currentScene = chosen.destination; //Move to the destination.
@@ -307,4 +377,52 @@ public class StoryNavigation : MonoBehaviour
         }
                 
     }
+
+    public void AddItemToInventory(List<StoryScene.InventoryEntry> rewards)
+    {
+        foreach (var rewardItem in rewards)
+        {
+            StoryScene.InventoryEntry itemHandler = rewardItem;
+            if (rewardItem.itemCount == 0) //Failsafe for if you forget to input a count
+            {
+                Debug.Log("Oh careful! Can't have zero " + rewardItem.itemData.name + "!");
+                itemHandler.itemCount = 1;
+            }
+            
+            if (inventory.Count == 0) //If you've got nothing in your inventory...
+            {
+                Debug.Log("Lots of space in your bag, eh?");
+                inventory.Add(itemHandler); //Add it to your inventory.
+            }
+            else
+            {
+                Debug.Log("Let's see if we can fit it in there...");
+                
+                bool match = false;
+                
+                for(int i = 0; i < inventory.Count; i++) //Compare against all items in your inventory...
+                {
+                    StoryScene.InventoryEntry thisItem = inventory[i];
+                    if (itemHandler.itemData.name == inventory[i].itemData.name) //If you already have the item...
+                    {
+                        Debug.Log("Oh hey, you've already got this one!");
+                        match = true;
+                        thisItem.itemCount += itemHandler.itemCount; //Add to the count.
+                        inventory.RemoveAt(i);
+                        inventory.Add(thisItem);
+                        
+                        break; //Stop checking items
+                    }
+                }
+                
+                if (!match) //If you didn't already have it...
+                {
+                    Debug.Log("First time?");
+                    inventory.Add(itemHandler); //Add it to your inventory.
+                }
+            }
+        }
+    }
+    
+    
 }

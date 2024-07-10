@@ -17,21 +17,30 @@ MonoBehaviour:
   sceneDescription: Except that outside doesn't exist. You know this. Stop being
     difficult.
   backgroundImage: {fileID: 0}
+  usesMasterButton: 0
   sceneChoices:
   - choiceText: Go Back to Bed
     destination: Start
-    tool: None
-    lockoutTool: None
+    tools: []
+    lockoutTools: []
+    lowerTimeBound: 0
+    upperTimeBound: 0
+    hideWhenInvalid: 0
     advancesDay: 1
     coinCost: 0
     rewards:
-    - name: Meta
-      resets: 1
-      isSecret: 1
+    - itemData: {fileID: 11400000, guid: 50e47709111ade6478b7c8583e64a40c, type: 2}
+      itemCount: 0
   - choiceText: Buy The Outside Expansion (999g)
     destination: Rich
-    tool: None
-    lockoutTool: None
+    tools:
+    - trait: Meta
+      amount: 1
+      consumesItem: 0
+    lockoutTools: []
+    lowerTimeBound: 0
+    upperTimeBound: 0
+    hideWhenInvalid: 0
     advancesDay: 1
     coinCost: 999
     rewards: []

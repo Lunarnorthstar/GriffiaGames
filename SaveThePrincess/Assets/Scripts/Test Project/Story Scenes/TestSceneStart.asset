@@ -21,8 +21,12 @@ MonoBehaviour:
   - choiceText: Break the Cycle
     destination: End
     tools:
-    - Meta
-    - Taxes
+    - trait: Meta
+      amount: 2
+      consumesItem: 0
+    - trait: Taxes
+      amount: 1
+      consumesItem: 1
     lockoutTools: []
     lowerTimeBound: 0
     upperTimeBound: 0
@@ -34,8 +38,10 @@ MonoBehaviour:
     destination: Breakfast
     tools: []
     lockoutTools:
-    - Meta
-    - Taxes
+    - trait: 
+      maximum: 0
+    - trait: 
+      maximum: 0
     lowerTimeBound: 0
     upperTimeBound: 1
     hideWhenInvalid: 0
@@ -45,7 +51,9 @@ MonoBehaviour:
   - choiceText: Go Outside
     destination: Outside
     tools: []
-    lockoutTools: []
+    lockoutTools:
+    - trait: Taxes
+      maximum: 1
     lowerTimeBound: 2
     upperTimeBound: 0
     hideWhenInvalid: 0

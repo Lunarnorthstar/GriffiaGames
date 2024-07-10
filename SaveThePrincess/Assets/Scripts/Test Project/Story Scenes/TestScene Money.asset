@@ -22,14 +22,19 @@ MonoBehaviour:
     outside exists all the people outside exist too. That includes the FBI, so since
     you''re so rich I hope you enjoy doing your taxes.'
   backgroundImage: {fileID: 21300000, guid: b1febb04a0caf214695c314a9f6875fd, type: 3}
+  usesMasterButton: 0
   sceneChoices:
   - choiceText: Delete The Outside Expansion
     destination: Start
-    tool: None
-    lockoutTool: None
+    tools: []
+    lockoutTools: []
+    lowerTimeBound: 0
+    upperTimeBound: 0
+    hideWhenInvalid: 0
     advancesDay: 1
     coinCost: 0
     rewards:
-    - name: Taxes
-      resets: 0
-      isSecret: 0
+    - itemData: {fileID: 11400000, guid: db863ef9fc0803c42928cb9fa1465b78, type: 2}
+      itemCount: 0
+    - itemData: {fileID: 11400000, guid: 50e47709111ade6478b7c8583e64a40c, type: 2}
+      itemCount: 0

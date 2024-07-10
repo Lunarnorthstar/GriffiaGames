@@ -20,14 +20,30 @@ MonoBehaviour:
     This took
     like an hour to do, but it works!'
   backgroundImage: {fileID: 0}
+  usesMasterButton: 0
   sceneChoices:
   - choiceText: Play Again
     destination: RESET
-    tool: None
-    lockoutTool: None
+    tools: []
+    lockoutTools: []
+    lowerTimeBound: 0
+    upperTimeBound: 0
+    hideWhenInvalid: 0
     advancesDay: 0
     coinCost: 0
     rewards:
-    - name: Prestige Token
-      resets: 0
-      isSecret: 0
+    - itemData: {fileID: 11400000, guid: b4c82814af1e11942a9ac64db6c3aebf, type: 2}
+      itemCount: 0
+  - choiceText: OWO what's this?
+    destination: Junk
+    tools:
+    - trait: Thing
+      amount: 5
+      consumesItem: 1
+    lockoutTools: []
+    lowerTimeBound: 0
+    upperTimeBound: 0
+    hideWhenInvalid: 0
+    advancesDay: 0
+    coinCost: 0
+    rewards: []
