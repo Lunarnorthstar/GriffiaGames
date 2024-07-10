@@ -22,7 +22,7 @@ A text based adventure isn't much if there's only one story scene. Add an elemen
 **"Coin Cost"** is the amount of money this choice requires and consumes. Note that you can set this value to a negative number to grant coins. For example, I can charge a player 20 coins to buy a potion by setting the value to 20, or give them 30 in exchange for some labor by setting the value to -30.
 **"Lockout Tools"** is a list of tags that forbid a player from selecting this choice. This will be explained later.
 **"Lower Time Bound"** prevents an option from being selected if the day counter is below this value. For example, if I set this to 3 then the player can't select this option until it's at least day 3.
-**"Upper Time Bound"** prevents an option from being selected if the day counter is *at or above* this value. For example, if I set this to 7 then the player can't select this option if it's day 7 or later.
+**"Upper Time Bound"** prevents an option from being selected if the day counter is *above* this value. For example, if I set this to 7 then the player can't select this option if it's day 7 or later.
 **"Hide When Invalid"** determines if the choice should be displayed in greyed out text if it cannot be selected, or if the button shouldn't appear at all.
 **"Advances Day"** determines if selecting this choice should increment the day counter.
 **"Rewards"** is a list of all items the choice will give you.
