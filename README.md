@@ -2,10 +2,10 @@
 ## How To Use This Framework
 The project should contain a sample story to showcase how elements of the framework function. To start creating your own story, follow these steps:
 
-###Step 1: Create and set up a new scene
+##Step 1: Create and set up a new scene
 In your new scene, drag in the Framework prefab. This should come included with all variables set up. Now remove all the TestScene ScriptableObjects from the Scenes list on the Gamemanager object. Set up the player's starting money by modifying the "Starting Coins" variable on the Gamemanager object.
 
-###Step 2: Create a starting scene
+##Step 2: Create a starting scene
 Right click in the project folder widget and select "Story Scene" from the "StorythreadSO" option under the "Create" option. This will create a blank scene. Input "Start" (Case sensitive) as the Scene Tag. This is the only scene that requires a specific scene tag. The project will still function without this scene tag, but it may have unexpected behavior.
 
 The "Scene Title" field is what will be displayed in place of the text that should currently say "Title".
@@ -13,7 +13,7 @@ The "Scene Description" field is the body of text that will describe what happen
 You can set a sprite to use as your background image. If you don't, the background image will be the same as the previous story scene's.
 The "Uses Master Button" checkbox will enable the story scene to use the highest up button (In editor view, this is the one with white text). Check this box if your story scene doesn't have much text in it. Leave it unchecked if you'd like some more room.
 
-###Step 3: Create a choice
+##Step 3: Create a choice
 A text based adventure isn't much if there's only one story scene. Add an element to the Scene Choices array. Note that choices will be displayed in game in the order in which they are input into the array.
 
 "Choice Text" is what will appear on the button itself. For example, if I set this text to "Explore the forest" the button will appear with the text "Explore the forest" on it.
@@ -31,7 +31,7 @@ Once you've created at least once choice, you'll need a second story scene to go
 
 If you start the game now, nothing will happen. This is because you need to add every scene you make to the GameManager's Scenes array. Do that for your starting scene and any other scenes you've created.
 
-###Step 4: Create some items
+##Step 4: Create some items
 While some stories may thrive on choice alone, you'll likely want to award your players some items they can use in certain situations. Items are also simple to create. When you were creating story scenes you may have noticed the "Story Item" option under StorythreadSO. These scriptableobjects contain all the data for your items.
 
 "Name" is the display name of the item.
@@ -43,7 +43,7 @@ Once you've created an item, you can give it to the player by adding an element 
 
 You can leave the count at 0, but this may cause some unexpected behavior.
 
-###Step 5: Create restrictions for a choice
+##Step 5: Create restrictions for a choice
 Almost any story will do this at some point. You can't chop down the tree without an axe, you can't unlock the chest without a key, and you can't get service from a shopkeeper if you've stolen from them.
 
 To make requirements for selecting a choice, add an element into the "Tools" array.
@@ -58,7 +58,7 @@ That's all good, but what if you want to stop a player from doing an action unde
 "Trait" is the item tag this choice will look for. If the player has any items with this tag, the choice will become invalid. For example, if the secret item I gave the player earlier has the "Thief" tag, I can set a lockout tool to "Thief" and the player will not be able to visit the shop again.
 "Maximum" is the upper limit on the amount of matching tags, similar to "Amount" in the Tools array. If you set this number to a value above 1, the player will still be able to select this option if the total number of matching tagged items in their inventory is less than this number. If I want to give the player a second chance, I may set the maximum to 2, so the first time they steal they can get away with it, but if they steal a second time, they're out of the shop forever.
 
-###Step 6: End the story
+##Step 6: End the story
 If, at any point, for any reason, you wish for a player to start the story from the beginning, just set a choice's destination as "RESET" (case sensitive). This will take the player back to the scene with the "Start" tag and reset their coin count, day counter, and inventory (but it will not remove any items set to persist). This is helpful for when, for example, a player dies.
 
 ##FAQ
