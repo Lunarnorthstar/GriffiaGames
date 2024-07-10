@@ -6,9 +6,9 @@ The project should contain a sample story to showcase how elements of the framew
 In your new scene, drag in the Framework prefab. This should come included with all variables set up. Now remove all the TestScene ScriptableObjects from the Scenes list on the Gamemanager object. Set up the player's starting money by modifying the "Starting Coins" variable on the Gamemanager object.
 
 ### Step 2: Create a starting scene
-Right click in the project folder widget and select "Story Scene" from the "StorythreadSO" option under the "Create" option. This will create a blank scene. Input "Start" (Case sensitive) as the Scene Tag. This is the only scene that requires a specific scene tag. The project will still function without this scene tag, but it may have unexpected behavior.
+Right click in the project folder widget and select "Story Scene" from the "StorythreadSO" option under the "Create" option. This will create a blank story scene. Input "Start" (Case sensitive) as the Scene Tag. This is the only story scene that requires a specific scene tag. The project will still function without this scene tag, but it may have unexpected behavior.
 
-The "Scene Title" field is what will be displayed in place of the text that should currently say "Title".
+The "Scene Title" field is what will be displayed in place of the text in the editor view that should currently say "Title".
 The "Scene Description" field is the body of text that will describe what happens in your scene.
 You can set a sprite to use as your background image. If you don't, the background image will be the same as the previous story scene's.
 The "Uses Master Button" checkbox will enable the story scene to use the highest up button (In editor view, this is the one with white text). Check this box if your story scene doesn't have much text in it. Leave it unchecked if you'd like some more room.
