@@ -3,7 +3,7 @@
 The project should contain a sample story to showcase how elements of the framework function. To start creating your own story, follow these steps:
 
 ### Step 1: Create and set up a new scene
-In your new scene, drag in the Framework prefab. This should come included with all variables set up. Now remove all the TestScene ScriptableObjects from the Scenes list on the Gamemanager object. Set up the player's starting money by modifying the "Starting Coins" variable on the Gamemanager object.
+In your new scene, drag in the Framework prefab. This should come included with all variables set up. Now remove all the TestScene ScriptableObjects from the Scenes list on the Gamemanager object. Set up the player's starting money by modifying the "Starting Money" variable on the Gamemanager object.
 
 ### Step 2: Create a starting scene
 Right click in the project folder widget and select "Story Scene" from the "StorythreadSO" option under the "Create" option. This will create a blank story scene. Input "Start" (Case sensitive) as the Scene Tag. This is the only story scene that requires a specific scene tag. The project will still function without this scene tag, but it may have unexpected behavior.
