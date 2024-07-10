@@ -27,16 +27,17 @@ MonoBehaviour:
     - trait: Taxes
       amount: 1
       consumesItem: 1
+    coinCost: 0
     lockoutTools: []
     lowerTimeBound: 0
     upperTimeBound: 0
     hideWhenInvalid: 1
     advancesDay: 0
-    coinCost: 0
     rewards: []
   - choiceText: Eat Breakfast (10g)
     destination: Breakfast
     tools: []
+    coinCost: 10
     lockoutTools:
     - trait: 
       maximum: 0
@@ -46,11 +47,11 @@ MonoBehaviour:
     upperTimeBound: 1
     hideWhenInvalid: 0
     advancesDay: 0
-    coinCost: 10
     rewards: []
   - choiceText: Go Outside
     destination: Outside
     tools: []
+    coinCost: 0
     lockoutTools:
     - trait: Taxes
       maximum: 1
@@ -58,5 +59,4 @@ MonoBehaviour:
     upperTimeBound: 0
     hideWhenInvalid: 0
     advancesDay: 0
-    coinCost: 0
     rewards: []

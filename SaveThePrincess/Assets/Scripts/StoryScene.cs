@@ -22,27 +22,33 @@ public class StoryScene : ScriptableObject
     [Tooltip("The scene background if it changes the background")]
     public Sprite backgroundImage;
 
-    [Tooltip("Whether the scene uses the top, centered, button.")]
+    [Tooltip("Whether the scene uses the topmost button.")]
     public bool usesMasterButton;
     
     [System.Serializable]
-    public struct InventoryEntry
+    public struct InventoryEntry //For each item in your inventory.
     {
+        [Tooltip("Which ScriptableObject this item is")]
         public Item itemData;
+        [Tooltip("How much of it you have")]
         public int itemCount;
     }
 
     [System.Serializable]
-    public struct toolData
+    public struct toolData //For each item required by a choice.
     {
+        [Tooltip("The trait for this requirement")]
         public string trait;
+        [Tooltip("How many you need")]
         public int amount;
+        [Tooltip("Whether it's consumed by the choice")]
         public bool consumesItem;
     }
 
     [System.Serializable]
-    public struct forbidData
+    public struct forbidData //For each item that locks you out of a choice.
     {
+        [Tooltip("The trait this barrier looks for")]
         public string trait;
         [Tooltip("If set to a number above 0, having total matching traits lower than this will still allow you to select this option.")]
         public int maximum;
@@ -51,12 +57,13 @@ public class StoryScene : ScriptableObject
     [System.Serializable]
     public struct choice
     {
-        [Tooltip("The text displayed on the topmost button")]
+        [Tooltip("The text displayed on the button")]
         public string choiceText;
-        [Tooltip("The tag of the scene the topmost button will take you to")]
+        [Tooltip("The tag of the scene the button will take you to")]
         public string destination;
         [Tooltip("The tag of the item required for this button")]
         public toolData[] tools;
+        public int coinCost;
         [Tooltip("The tag of the item that will prevent you from using the button")]
         public forbidData[] lockoutTools;
         [Tooltip("The day at which this option will become available")]
@@ -65,16 +72,13 @@ public class StoryScene : ScriptableObject
         public int upperTimeBound;
         [Tooltip("Whether the choice is hidden if the requirements are not met")]
         public bool hideWhenInvalid;
-        
-        
         [Tooltip("Whether the choice advances the day counter")]
         public bool advancesDay;
 
-        public int coinCost;
-
+        [Tooltip("What items this choice will give the player")]
         public InventoryEntry[] rewards;
     }
-    [Tooltip("Input 'None' (case sensitive) for no tool requirement")]
+    
     public choice[] sceneChoices;
 
 

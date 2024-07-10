@@ -55,7 +55,13 @@ MonoBehaviour:
   statusUI: {fileID: 0}
   coinUI: {fileID: 0}
   background: {fileID: 0}
-  buttons: []
+  buttons:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   printInventory: {fileID: 0}
   inventory: []
   startingCoins: 10
